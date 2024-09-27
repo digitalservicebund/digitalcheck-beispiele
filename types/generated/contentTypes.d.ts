@@ -28,6 +28,66 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiRegelungsvorhabenRegelungsvorhaben
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'regelungsvorhabens';
+  info: {
+    singularName: 'regelungsvorhaben';
+    pluralName: 'regelungsvorhabens';
+    displayName: 'Regelungsvorhaben';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    Gesetz: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    Ressort: Schema.Attribute.Enumeration<
+      [
+        'AA',
+        'BMAS',
+        'BMBF',
+        'BMDV',
+        'BMEL',
+        'BMF',
+        'BMFSFJ',
+        'BMG',
+        'BMI',
+        'BMJ',
+        'BMUV',
+        'BMVg',
+        'BMWK',
+        'BMWSB',
+        'BMZ',
+      ]
+    > &
+      Schema.Attribute.Required;
+    DIPVorgang: Schema.Attribute.String & Schema.Attribute.Required;
+    NKRStellungnahme: Schema.Attribute.String;
+    Prinzipienerfuellung: Schema.Attribute.Component<
+      'shared.prinzipienerfuellung',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
+  };
+}
+
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -879,6 +939,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
       'api::global.global': ApiGlobalGlobal;
+      'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;

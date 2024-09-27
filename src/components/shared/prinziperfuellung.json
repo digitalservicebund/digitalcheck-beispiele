@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_prinziperfuellungs",
+  "info": {
+    "displayName": "Prinziperfüllung",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "EinschaetzungReferat": {
+      "type": "enumeration",
+      "enum": [
+        "Ja",
+        "Nein",
+        "Teilweise",
+        "Nicht relevant"
+      ],
+      "required": true
+    },
+    "Paragraphen": {
+      "type": "blocks",
+      "required": false
+    },
+    "NKRStellungnahme": {
+      "type": "blocks"
+    },
+    "BegruendungDS": {
+      "type": "blocks"
+    }
+  }
+}

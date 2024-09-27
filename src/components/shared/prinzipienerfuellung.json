@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_shared_prinzipienerfuellungs",
+  "info": {
+    "displayName": "Prinzipienerfüllung",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "DigitaleKommunikation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "Wiederverwendung": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "Datenschutz": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "KlareRegelungen": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "Automatisierung": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    }
+  }
+}

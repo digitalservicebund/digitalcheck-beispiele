@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regelungsvorhabens",
+  "info": {
+    "singularName": "regelungsvorhaben",
+    "pluralName": "regelungsvorhabens",
+    "displayName": "Regelungsvorhaben",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titel": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Gesetz": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "Ressort": {
+      "type": "enumeration",
+      "enum": [
+        "AA",
+        "BMAS",
+        "BMBF",
+        "BMDV",
+        "BMEL",
+        "BMF",
+        "BMFSFJ",
+        "BMG",
+        "BMI",
+        "BMJ",
+        "BMUV",
+        "BMVg",
+        "BMWK",
+        "BMWSB",
+        "BMZ"
+      ],
+      "required": true
+    },
+    "DIPVorgang": {
+      "type": "string",
+      "required": true
+    },
+    "NKRStellungnahme": {
+      "type": "string"
+    },
+    "Prinzipienerfuellung": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinzipienerfuellung"
+    }
+  }
+}
