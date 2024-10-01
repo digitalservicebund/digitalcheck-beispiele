@@ -27,6 +27,11 @@
     },
     "Tipps": {
       "type": "blocks"
+    },
+    "regelungsvorhaben": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regelungsvorhaben.regelungsvorhaben"
     }
   }
 }

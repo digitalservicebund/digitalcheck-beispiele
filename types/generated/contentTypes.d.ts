@@ -531,6 +531,10 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Nummer: Schema.Attribute.Integer & Schema.Attribute.Required;
     Tipps: Schema.Attribute.Blocks;
+    regelungsvorhaben: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
