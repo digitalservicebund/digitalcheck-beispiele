@@ -589,12 +589,12 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       ]
     > &
       Schema.Attribute.Required;
-    DIPVorgang: Schema.Attribute.String & Schema.Attribute.Required;
     NKRStellungnahme: Schema.Attribute.String;
     Prinzipienerfuellung: Schema.Attribute.Component<
       'shared.prinzipienerfuellung',
       false
     >;
+    DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

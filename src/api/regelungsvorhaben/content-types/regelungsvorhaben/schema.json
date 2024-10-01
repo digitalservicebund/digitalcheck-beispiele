@@ -43,10 +43,6 @@
       ],
       "required": true
     },
-    "DIPVorgang": {
-      "type": "string",
-      "required": true
-    },
     "NKRStellungnahme": {
       "type": "string"
     },
@@ -54,6 +50,10 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.prinzipienerfuellung"
+    },
+    "DIPVorgang": {
+      "type": "integer",
+      "required": true
     }
   }
 }
