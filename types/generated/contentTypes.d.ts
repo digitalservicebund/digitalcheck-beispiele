@@ -1,93 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
-  collectionName: 'globals';
-  info: {
-    singularName: 'global';
-    pluralName: 'globals';
-    displayName: 'Global';
-    description: 'Define global settings';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    siteName: Schema.Attribute.String & Schema.Attribute.Required;
-    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
-    siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::global.global'>;
-  };
-}
-
-export interface ApiRegelungsvorhabenRegelungsvorhaben
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'regelungsvorhabens';
-  info: {
-    singularName: 'regelungsvorhaben';
-    pluralName: 'regelungsvorhabens';
-    displayName: 'Regelungsvorhaben';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Titel: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    Gesetz: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    Ressort: Schema.Attribute.Enumeration<
-      [
-        'AA',
-        'BMAS',
-        'BMBF',
-        'BMDV',
-        'BMEL',
-        'BMF',
-        'BMFSFJ',
-        'BMG',
-        'BMI',
-        'BMJ',
-        'BMUV',
-        'BMVg',
-        'BMWK',
-        'BMWSB',
-        'BMZ',
-      ]
-    > &
-      Schema.Attribute.Required;
-    DIPVorgang: Schema.Attribute.String & Schema.Attribute.Required;
-    NKRStellungnahme: Schema.Attribute.String;
-    Prinzipienerfuellung: Schema.Attribute.Component<
-      'shared.prinzipienerfuellung',
-      false
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::regelungsvorhaben.regelungsvorhaben'
-    >;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -573,6 +485,124 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
+  collectionName: 'globals';
+  info: {
+    singularName: 'global';
+    pluralName: 'globals';
+    displayName: 'Global';
+    description: 'Define global settings';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::global.global'>;
+  };
+}
+
+export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
+  collectionName: 'prinzips';
+  info: {
+    singularName: 'prinzip';
+    pluralName: 'prinzips';
+    displayName: 'Prinzip';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::prinzip.prinzip'
+    >;
+  };
+}
+
+export interface ApiRegelungsvorhabenRegelungsvorhaben
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'regelungsvorhabens';
+  info: {
+    singularName: 'regelungsvorhaben';
+    pluralName: 'regelungsvorhabens';
+    displayName: 'Regelungsvorhaben';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Titel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    Gesetz: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    Ressort: Schema.Attribute.Enumeration<
+      [
+        'AA',
+        'BMAS',
+        'BMBF',
+        'BMDV',
+        'BMEL',
+        'BMF',
+        'BMFSFJ',
+        'BMG',
+        'BMI',
+        'BMJ',
+        'BMUV',
+        'BMVg',
+        'BMWK',
+        'BMWSB',
+        'BMZ',
+      ]
+    > &
+      Schema.Attribute.Required;
+    DIPVorgang: Schema.Attribute.String & Schema.Attribute.Required;
+    NKRStellungnahme: Schema.Attribute.String;
+    Prinzipienerfuellung: Schema.Attribute.Component<
+      'shared.prinzipienerfuellung',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -938,8 +968,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::global.global': ApiGlobalGlobal;
-      'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -950,6 +978,9 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::global.global': ApiGlobalGlobal;
+      'api::prinzip.prinzip': ApiPrinzipPrinzip;
+      'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

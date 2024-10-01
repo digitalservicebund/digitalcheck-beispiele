@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "icon": "book",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Norm": {
+      "type": "string",
+      "required": true
+    },
+    "Text": {
+      "type": "blocks",
+      "required": true
+    },
+    "ErlaeuterungDS": {
+      "type": "blocks"
+    },
+    "Tags": {
+      "displayName": "Tag",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.tag"
+    }
+  }
+}

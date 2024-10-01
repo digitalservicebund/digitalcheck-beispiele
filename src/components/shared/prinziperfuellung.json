@@ -17,15 +17,13 @@
       ],
       "required": true
     },
-    "Paragraphen": {
-      "type": "blocks",
-      "required": false
-    },
     "NKRStellungnahme": {
       "type": "blocks"
     },
-    "BegruendungDS": {
-      "type": "blocks"
+    "Paragraphen": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.paragraph"
     }
   }
 }

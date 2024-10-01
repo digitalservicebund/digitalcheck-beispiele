@@ -1,5 +1,14 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface SharedTag extends Struct.ComponentSchema {
+  collectionName: 'components_shared_tags';
+  info: {
+    displayName: 'Tag';
+    icon: 'hashtag';
+  };
+  attributes: {};
+}
+
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
@@ -55,18 +64,34 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
       ['Ja', 'Nein', 'Teilweise', 'Nicht relevant']
     > &
       Schema.Attribute.Required;
-    Paragraphen: Schema.Attribute.Blocks;
     NKRStellungnahme: Schema.Attribute.Blocks;
-    BegruendungDS: Schema.Attribute.Blocks;
+    Paragraphen: Schema.Attribute.Component<'shared.paragraph', true>;
+  };
+}
+
+export interface SharedParagraph extends Struct.ComponentSchema {
+  collectionName: 'components_shared_paragraphs';
+  info: {
+    displayName: 'Paragraph';
+    icon: 'book';
+    description: '';
+  };
+  attributes: {
+    Norm: Schema.Attribute.String & Schema.Attribute.Required;
+    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    ErlaeuterungDS: Schema.Attribute.Blocks;
+    Tags: Schema.Attribute.Component<'shared.tag', true>;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.tag': SharedTag;
       'shared.seo': SharedSeo;
       'shared.prinzipienerfuellung': SharedPrinzipienerfuellung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
+      'shared.paragraph': SharedParagraph;
     }
   }
 }
