@@ -519,6 +519,7 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     singularName: 'prinzip';
     pluralName: 'prinzips';
     displayName: 'Prinzip';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -528,6 +529,8 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Nummer: Schema.Attribute.Integer & Schema.Attribute.Required;
+    Tipps: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

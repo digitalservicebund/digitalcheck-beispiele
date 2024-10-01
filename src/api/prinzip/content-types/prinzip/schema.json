@@ -4,7 +4,8 @@
   "info": {
     "singularName": "prinzip",
     "pluralName": "prinzips",
-    "displayName": "Prinzip"
+    "displayName": "Prinzip",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,13 @@
     "Beschreibung": {
       "type": "blocks",
       "required": true
+    },
+    "Nummer": {
+      "type": "integer",
+      "required": true
+    },
+    "Tipps": {
+      "type": "blocks"
     }
   }
 }
