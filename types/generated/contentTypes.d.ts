@@ -590,11 +590,12 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     > &
       Schema.Attribute.Required;
     NKRStellungnahme: Schema.Attribute.String;
+    DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
+    NKRNummer: Schema.Attribute.Integer & Schema.Attribute.Required;
     Prinzipienerfuellung: Schema.Attribute.Component<
       'shared.prinzipienerfuellung',
       false
     >;
-    DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

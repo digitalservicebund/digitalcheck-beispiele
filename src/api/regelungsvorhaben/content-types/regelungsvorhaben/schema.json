@@ -46,14 +46,18 @@
     "NKRStellungnahme": {
       "type": "string"
     },
+    "DIPVorgang": {
+      "type": "integer",
+      "required": true
+    },
+    "NKRNummer": {
+      "type": "integer",
+      "required": true
+    },
     "Prinzipienerfuellung": {
       "type": "component",
       "repeatable": false,
       "component": "shared.prinzipienerfuellung"
-    },
-    "DIPVorgang": {
-      "type": "integer",
-      "required": true
     }
   }
 }
