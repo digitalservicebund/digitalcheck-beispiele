@@ -78,9 +78,9 @@ export interface SharedParagraph extends Struct.ComponentSchema {
   };
   attributes: {
     Norm: Schema.Attribute.String & Schema.Attribute.Required;
-    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
     ErlaeuterungDS: Schema.Attribute.Blocks;
     Tags: Schema.Attribute.Component<'shared.tag', true>;
+    Text: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 
