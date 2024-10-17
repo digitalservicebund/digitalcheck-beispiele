@@ -58,6 +58,16 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.prinzipienerfuellung"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Titel"
+    },
+    "Rechtsgebiet": {
+      "type": "enumeration",
+      "enum": [
+        "TBD"
+      ]
     }
   }
 }

@@ -535,6 +535,7 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::regelungsvorhaben.regelungsvorhaben'
     >;
+    slug: Schema.Attribute.UID<'Name'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -596,6 +597,8 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       'shared.prinzipienerfuellung',
       false
     >;
+    slug: Schema.Attribute.UID<'Titel'>;
+    Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

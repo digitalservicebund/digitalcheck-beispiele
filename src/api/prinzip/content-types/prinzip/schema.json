@@ -32,6 +32,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::regelungsvorhaben.regelungsvorhaben"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Name"
     }
   }
 }
