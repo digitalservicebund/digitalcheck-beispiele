@@ -2,8 +2,17 @@
   "collectionName": "components_shared_tags",
   "info": {
     "displayName": "Tag",
-    "icon": "hashtag"
+    "icon": "hashtag",
+    "description": ""
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "Tag": {
+      "type": "enumeration",
+      "enum": [
+        "Tag1",
+        "Tag2"
+      ]
+    }
+  }
 }

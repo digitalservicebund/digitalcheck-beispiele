@@ -5,8 +5,11 @@ export interface SharedTag extends Struct.ComponentSchema {
   info: {
     displayName: 'Tag';
     icon: 'hashtag';
+    description: '';
   };
-  attributes: {};
+  attributes: {
+    Tag: Schema.Attribute.Enumeration<['Tag1', 'Tag2']>;
+  };
 }
 
 export interface SharedSeo extends Struct.ComponentSchema {
