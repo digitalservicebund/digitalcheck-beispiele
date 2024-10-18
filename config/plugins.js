@@ -1,1 +1,5 @@
-module.exports = () => ({});
+module.exports = () => ({
+    'schemas-to-ts': {
+        enabled: true,
+    },
+});
