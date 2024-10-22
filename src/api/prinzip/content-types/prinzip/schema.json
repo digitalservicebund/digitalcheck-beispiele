@@ -28,14 +28,15 @@
     "Tipps": {
       "type": "blocks"
     },
-    "regelungsvorhaben": {
+    "GuteUmsetzung": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::regelungsvorhaben.regelungsvorhaben"
     },
-    "slug": {
+    "URLBezeichnung": {
       "type": "uid",
-      "targetField": "Name"
+      "targetField": "Name",
+      "required": true
     }
   }
 }

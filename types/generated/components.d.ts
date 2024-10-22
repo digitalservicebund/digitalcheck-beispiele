@@ -38,20 +38,25 @@ export interface SharedPrinzipienerfuellung extends Struct.ComponentSchema {
     DigitaleKommunikation: Schema.Attribute.Component<
       'shared.prinziperfuellung',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     Wiederverwendung: Schema.Attribute.Component<
       'shared.prinziperfuellung',
       false
-    >;
-    Datenschutz: Schema.Attribute.Component<'shared.prinziperfuellung', false>;
+    > &
+      Schema.Attribute.Required;
+    Datenschutz: Schema.Attribute.Component<'shared.prinziperfuellung', false> &
+      Schema.Attribute.Required;
     KlareRegelungen: Schema.Attribute.Component<
       'shared.prinziperfuellung',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     Automatisierung: Schema.Attribute.Component<
       'shared.prinziperfuellung',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -81,9 +86,9 @@ export interface SharedParagraph extends Struct.ComponentSchema {
   };
   attributes: {
     Norm: Schema.Attribute.String & Schema.Attribute.Required;
-    ErlaeuterungDS: Schema.Attribute.Blocks;
+    WarumWichtig: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Tags: Schema.Attribute.Component<'shared.tag', true>;
-    Text: Schema.Attribute.RichText & Schema.Attribute.Required;
+    Regelungstext: Schema.Attribute.RichText & Schema.Attribute.Required;
   };
 }
 

@@ -10,27 +10,32 @@
     "DigitaleKommunikation": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.prinziperfuellung"
+      "component": "shared.prinziperfuellung",
+      "required": true
     },
     "Wiederverwendung": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.prinziperfuellung"
+      "component": "shared.prinziperfuellung",
+      "required": true
     },
     "Datenschutz": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.prinziperfuellung"
+      "component": "shared.prinziperfuellung",
+      "required": true
     },
     "KlareRegelungen": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.prinziperfuellung"
+      "component": "shared.prinziperfuellung",
+      "required": true
     },
     "Automatisierung": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.prinziperfuellung"
+      "component": "shared.prinziperfuellung",
+      "required": true
     }
   }
 }

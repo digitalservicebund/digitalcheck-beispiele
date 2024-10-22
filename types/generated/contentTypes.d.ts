@@ -545,11 +545,11 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Nummer: Schema.Attribute.Integer & Schema.Attribute.Required;
     Tipps: Schema.Attribute.Blocks;
-    regelungsvorhaben: Schema.Attribute.Relation<
+    GuteUmsetzung: Schema.Attribute.Relation<
       'oneToMany',
       'api::regelungsvorhaben.regelungsvorhaben'
     >;
-    slug: Schema.Attribute.UID<'Name'>;
+    URLBezeichnung: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -611,8 +611,9 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     Prinzipienerfuellung: Schema.Attribute.Component<
       'shared.prinzipienerfuellung',
       false
-    >;
-    slug: Schema.Attribute.UID<'Titel'>;
+    > &
+      Schema.Attribute.Required;
+    URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
     Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

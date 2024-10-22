@@ -11,8 +11,9 @@
       "type": "string",
       "required": true
     },
-    "ErlaeuterungDS": {
-      "type": "blocks"
+    "WarumWichtig": {
+      "type": "blocks",
+      "required": true
     },
     "Tags": {
       "displayName": "Tag",
@@ -20,7 +21,7 @@
       "repeatable": true,
       "component": "shared.tag"
     },
-    "Text": {
+    "Regelungstext": {
       "type": "richtext",
       "required": true
     }

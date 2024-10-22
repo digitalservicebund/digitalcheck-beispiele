@@ -57,11 +57,13 @@
     "Prinzipienerfuellung": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.prinzipienerfuellung"
+      "component": "shared.prinzipienerfuellung",
+      "required": true
     },
-    "slug": {
+    "URLBezeichnung": {
       "type": "uid",
-      "targetField": "Titel"
+      "targetField": "Titel",
+      "required": true
     },
     "Rechtsgebiet": {
       "type": "enumeration",
