@@ -70,6 +70,24 @@
       "enum": [
         "TBD"
       ]
+    },
+    "VeroeffentlichungsDatum": {
+      "type": "date"
+    },
+    "VorpruefungITSystem": {
+      "type": "boolean"
+    },
+    "VorpruefungVerpflichtungen": {
+      "type": "boolean"
+    },
+    "VorpruefungDatenaustausch": {
+      "type": "boolean"
+    },
+    "VorpruefungKommunikation": {
+      "type": "boolean"
+    },
+    "VorpruefungAutomatisierung": {
+      "type": "boolean"
     }
   }
 }
