@@ -17,7 +17,7 @@
       ],
       "required": true
     },
-    "NKRStellungnahme": {
+    "NKRStellungnahmePrinzip": {
       "type": "blocks"
     },
     "Paragraphen": {

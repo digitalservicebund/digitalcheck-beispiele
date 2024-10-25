@@ -43,7 +43,7 @@
       ],
       "required": true
     },
-    "NKRStellungnahme": {
+    "NKRStellungnahmeLink": {
       "type": "string"
     },
     "DIPVorgang": {
@@ -54,9 +54,9 @@
       "type": "integer",
       "required": true
     },
-    "Prinzipienerfuellung": {
+    "Digitalcheck": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "shared.prinzipienerfuellung",
       "required": true
     },
@@ -88,6 +88,9 @@
     },
     "VorpruefungAutomatisierung": {
       "type": "boolean"
+    },
+    "NKRStellungnahmeText": {
+      "type": "richtext"
     }
   }
 }

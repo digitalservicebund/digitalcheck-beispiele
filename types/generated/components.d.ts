@@ -30,7 +30,7 @@ export interface SharedSeo extends Struct.ComponentSchema {
 export interface SharedPrinzipienerfuellung extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinzipienerfuellungs';
   info: {
-    displayName: 'Prinzipienerf\u00FCllung';
+    displayName: 'Digitalcheck';
     icon: 'bulletList';
     description: '';
   };
@@ -72,7 +72,7 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
       ['Ja', 'Nein', 'Teilweise', 'Nicht relevant']
     > &
       Schema.Attribute.Required;
-    NKRStellungnahme: Schema.Attribute.Blocks;
+    NKRStellungnahmePrinzip: Schema.Attribute.Blocks;
     Paragraphen: Schema.Attribute.Component<'shared.paragraph', true>;
   };
 }
