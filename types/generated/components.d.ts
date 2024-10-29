@@ -57,6 +57,10 @@ export interface SharedPrinzipienerfuellung extends Struct.ComponentSchema {
       false
     > &
       Schema.Attribute.Required;
+    Visualisierungen: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
   };
 }
 
