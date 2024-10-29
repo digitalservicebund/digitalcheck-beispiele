@@ -11,6 +11,7 @@ export interface SharedVisualisierung extends Struct.ComponentSchema {
     Bild: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Beschreibung: Schema.Attribute.Blocks;
     VisualisierungsArt: Schema.Attribute.String;
+    BildAlternativText: Schema.Attribute.String;
   };
 }
 
