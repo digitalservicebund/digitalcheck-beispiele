@@ -37,15 +37,10 @@
       "component": "shared.prinziperfuellung",
       "required": true
     },
-    "Visualisierungen": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "Visualisierung": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.visualisierung"
     }
   }
 }

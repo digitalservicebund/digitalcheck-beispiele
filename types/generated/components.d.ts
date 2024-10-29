@@ -1,5 +1,19 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface SharedVisualisierung extends Struct.ComponentSchema {
+  collectionName: 'components_shared_visualisierungs';
+  info: {
+    displayName: 'Visualisierung';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    Bild: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Beschreibung: Schema.Attribute.Blocks;
+    VisualisierungsArt: Schema.Attribute.String;
+  };
+}
+
 export interface SharedTag extends Struct.ComponentSchema {
   collectionName: 'components_shared_tags';
   info: {
@@ -57,10 +71,7 @@ export interface SharedPrinzipienerfuellung extends Struct.ComponentSchema {
       false
     > &
       Schema.Attribute.Required;
-    Visualisierungen: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    Visualisierung: Schema.Attribute.Component<'shared.visualisierung', true>;
   };
 }
 
@@ -99,6 +110,7 @@ export interface SharedParagraph extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.visualisierung': SharedVisualisierung;
       'shared.tag': SharedTag;
       'shared.seo': SharedSeo;
       'shared.prinzipienerfuellung': SharedPrinzipienerfuellung;
