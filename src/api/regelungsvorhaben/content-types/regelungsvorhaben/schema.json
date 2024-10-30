@@ -17,11 +17,6 @@
       "required": true,
       "unique": true
     },
-    "Gesetz": {
-      "type": "boolean",
-      "default": true,
-      "required": true
-    },
     "Ressort": {
       "type": "enumeration",
       "enum": [
@@ -54,12 +49,6 @@
       "type": "integer",
       "required": true
     },
-    "Digitalcheck": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.prinzipienerfuellung",
-      "required": true
-    },
     "URLBezeichnung": {
       "type": "uid",
       "targetField": "Titel",
@@ -74,23 +63,14 @@
     "VeroeffentlichungsDatum": {
       "type": "date"
     },
-    "VorpruefungITSystem": {
-      "type": "boolean"
-    },
-    "VorpruefungVerpflichtungen": {
-      "type": "boolean"
-    },
-    "VorpruefungDatenaustausch": {
-      "type": "boolean"
-    },
-    "VorpruefungKommunikation": {
-      "type": "boolean"
-    },
-    "VorpruefungAutomatisierung": {
-      "type": "boolean"
-    },
-    "NKRStellungnahmeText": {
+    "NKRStellungnahmeRegelungText": {
       "type": "richtext"
+    },
+    "Digitalchecks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::digitalcheck.digitalcheck",
+      "mappedBy": "Regelungsvorhaben"
     }
   }
 }

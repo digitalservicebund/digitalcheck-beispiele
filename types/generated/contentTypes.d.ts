@@ -485,6 +485,62 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiDigitalcheckDigitalcheck
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'digitalchecks';
+  info: {
+    singularName: 'digitalcheck';
+    pluralName: 'digitalchecks';
+    displayName: 'Digitalcheck';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    DigitaleKommunikation: Schema.Attribute.Component<
+      'shared.prinziperfuellung',
+      false
+    >;
+    Wiederverwendung: Schema.Attribute.Component<
+      'shared.prinziperfuellung',
+      true
+    >;
+    Datenschutz: Schema.Attribute.Component<'shared.prinziperfuellung', false>;
+    KlareRegelungen: Schema.Attribute.Component<
+      'shared.prinziperfuellung',
+      false
+    >;
+    Automatisierung: Schema.Attribute.Component<
+      'shared.prinziperfuellung',
+      false
+    >;
+    Visualisierung: Schema.Attribute.Component<'shared.visualisierung', false>;
+    NKRStellungnahmeDCText: Schema.Attribute.Blocks;
+    Regelungsvorhaben: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
+    VorpruefungITSystem: Schema.Attribute.Boolean;
+    VorpruefungVerpflichtungen: Schema.Attribute.Boolean;
+    VorpruefungDatenaustausch: Schema.Attribute.Boolean;
+    VorpruefungKommunikation: Schema.Attribute.Boolean;
+    VorpruefungAutomatisierung: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::digitalcheck.digitalcheck'
+    >;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -530,12 +586,11 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Nummer: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Tipps: Schema.Attribute.Blocks;
+    URLBezeichnung: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
     GuteUmsetzung: Schema.Attribute.Relation<
       'oneToMany',
-      'api::regelungsvorhaben.regelungsvorhaben'
+      'api::digitalcheck.digitalcheck'
     >;
-    URLBezeichnung: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -567,9 +622,6 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     Titel: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    Gesetz: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
     Ressort: Schema.Attribute.Enumeration<
       [
         'AA',
@@ -593,20 +645,14 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     NKRStellungnahmeLink: Schema.Attribute.String;
     DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
     NKRNummer: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Digitalcheck: Schema.Attribute.Component<
-      'shared.prinzipienerfuellung',
-      true
-    > &
-      Schema.Attribute.Required;
     URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
     Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     VeroeffentlichungsDatum: Schema.Attribute.Date;
-    VorpruefungITSystem: Schema.Attribute.Boolean;
-    VorpruefungVerpflichtungen: Schema.Attribute.Boolean;
-    VorpruefungDatenaustausch: Schema.Attribute.Boolean;
-    VorpruefungKommunikation: Schema.Attribute.Boolean;
-    VorpruefungAutomatisierung: Schema.Attribute.Boolean;
-    NKRStellungnahmeText: Schema.Attribute.RichText;
+    NKRStellungnahmeRegelungText: Schema.Attribute.RichText;
+    Digitalchecks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::digitalcheck.digitalcheck'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -997,6 +1043,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::digitalcheck.digitalcheck': ApiDigitalcheckDigitalcheck;
       'api::global.global': ApiGlobalGlobal;
       'api::prinzip.prinzip': ApiPrinzipPrinzip;
       'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;

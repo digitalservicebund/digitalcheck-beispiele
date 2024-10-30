@@ -41,40 +41,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedPrinzipienerfuellung extends Struct.ComponentSchema {
-  collectionName: 'components_shared_prinzipienerfuellungs';
-  info: {
-    displayName: 'Digitalcheck';
-    icon: 'bulletList';
-    description: '';
-  };
-  attributes: {
-    DigitaleKommunikation: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
-    > &
-      Schema.Attribute.Required;
-    Wiederverwendung: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
-    > &
-      Schema.Attribute.Required;
-    Datenschutz: Schema.Attribute.Component<'shared.prinziperfuellung', false> &
-      Schema.Attribute.Required;
-    KlareRegelungen: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
-    > &
-      Schema.Attribute.Required;
-    Automatisierung: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
-    > &
-      Schema.Attribute.Required;
-    Visualisierung: Schema.Attribute.Component<'shared.visualisierung', true>;
-  };
-}
-
 export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinziperfuellungs';
   info: {
@@ -87,7 +53,6 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
       ['Ja', 'Nein', 'Teilweise', 'Nicht relevant']
     > &
       Schema.Attribute.Required;
-    NKRStellungnahmePrinzip: Schema.Attribute.Blocks;
     Paragraphen: Schema.Attribute.Component<'shared.paragraph', true>;
   };
 }
@@ -113,7 +78,6 @@ declare module '@strapi/strapi' {
       'shared.visualisierung': SharedVisualisierung;
       'shared.tag': SharedTag;
       'shared.seo': SharedSeo;
-      'shared.prinzipienerfuellung': SharedPrinzipienerfuellung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
       'shared.paragraph': SharedParagraph;
     }

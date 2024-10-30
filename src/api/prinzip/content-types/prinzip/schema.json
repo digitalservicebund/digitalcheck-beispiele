@@ -25,18 +25,15 @@
       "type": "integer",
       "required": true
     },
-    "Tipps": {
-      "type": "blocks"
-    },
-    "GuteUmsetzung": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::regelungsvorhaben.regelungsvorhaben"
-    },
     "URLBezeichnung": {
       "type": "uid",
       "targetField": "Name",
       "required": true
+    },
+    "GuteUmsetzung": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::digitalcheck.digitalcheck"
     }
   }
 }
