@@ -45,12 +45,6 @@
     "NKRStellungnahmeDCText": {
       "type": "blocks"
     },
-    "Regelungsvorhaben": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::regelungsvorhaben.regelungsvorhaben",
-      "inversedBy": "Digitalchecks"
-    },
     "VorpruefungITSystem": {
       "type": "boolean"
     },
@@ -65,6 +59,12 @@
     },
     "VorpruefungAutomatisierung": {
       "type": "boolean"
+    },
+    "Regelungsvorhaben": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regelungsvorhaben.regelungsvorhaben",
+      "inversedBy": "Digitalcheck"
     }
   }
 }
