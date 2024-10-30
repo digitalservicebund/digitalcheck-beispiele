@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "digitalchecks",
+  "info": {
+    "singularName": "digitalcheck",
+    "pluralName": "digitalchecks",
+    "displayName": "Digitalcheck",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DigitaleKommunikation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "Wiederverwendung": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.prinziperfuellung"
+    },
+    "Datenschutz": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "KlareRegelungen": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "Automatisierung": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinziperfuellung"
+    },
+    "Visualisierung": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.visualisierung"
+    },
+    "NKRStellungnahmeDCText": {
+      "type": "blocks"
+    },
+    "Regelungsvorhaben": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regelungsvorhaben.regelungsvorhaben",
+      "inversedBy": "Digitalchecks"
+    },
+    "VorpruefungITSystem": {
+      "type": "boolean"
+    },
+    "VorpruefungVerpflichtungen": {
+      "type": "boolean"
+    },
+    "VorpruefungDatenaustausch": {
+      "type": "boolean"
+    },
+    "VorpruefungKommunikation": {
+      "type": "boolean"
+    },
+    "VorpruefungAutomatisierung": {
+      "type": "boolean"
+    }
+  }
+}
