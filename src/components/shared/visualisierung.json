@@ -23,9 +23,6 @@
     },
     "VisualisierungsArt": {
       "type": "string"
-    },
-    "BildAlternativText": {
-      "type": "string"
     }
   }
 }
