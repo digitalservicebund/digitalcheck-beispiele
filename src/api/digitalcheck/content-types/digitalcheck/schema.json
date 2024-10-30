@@ -19,7 +19,7 @@
     },
     "Wiederverwendung": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "shared.prinziperfuellung"
     },
     "Datenschutz": {
