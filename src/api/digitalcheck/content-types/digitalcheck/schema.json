@@ -39,7 +39,7 @@
     },
     "Visualisierung": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "shared.visualisierung"
     },
     "NKRStellungnahmeDCText": {
