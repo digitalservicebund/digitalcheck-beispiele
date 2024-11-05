@@ -8,10 +8,6 @@ export interface SharedAbsatz extends Struct.ComponentSchema {
     icon: 'layer';
   };
   attributes: {
-    Nummer: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique &
-      Schema.Attribute.DefaultTo<1>;
     Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
