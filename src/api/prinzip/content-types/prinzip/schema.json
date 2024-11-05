@@ -30,7 +30,7 @@
       "targetField": "Name",
       "required": true
     },
-    "GuteUmsetzung": {
+    "GuteUmsetzungen": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::digitalcheck.digitalcheck"

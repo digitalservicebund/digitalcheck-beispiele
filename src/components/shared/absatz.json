@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_absatzs",
+  "info": {
+    "displayName": "Absatz",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Nummer": {
+      "type": "integer",
+      "unique": true,
+      "required": true,
+      "default": 1
+    },
+    "Text": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

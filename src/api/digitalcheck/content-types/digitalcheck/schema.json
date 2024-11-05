@@ -12,36 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "DigitaleKommunikation": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.prinziperfuellung"
-    },
-    "Wiederverwendung": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.prinziperfuellung"
-    },
-    "Datenschutz": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.prinziperfuellung"
-    },
-    "KlareRegelungen": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.prinziperfuellung"
-    },
-    "Automatisierung": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.prinziperfuellung"
-    },
-    "Visualisierung": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.visualisierung"
-    },
     "NKRStellungnahmeDCText": {
       "type": "blocks"
     },
@@ -60,11 +30,67 @@
     "VorpruefungAutomatisierung": {
       "type": "boolean"
     },
+    "EinschaetzungKommunikation": {
+      "type": "enumeration",
+      "enum": [
+        "Ja",
+        "Nein",
+        "Teilweise",
+        "Nicht Relevant"
+      ]
+    },
+    "EinschaetzungWiederverwendung": {
+      "type": "enumeration",
+      "enum": [
+        "Ja",
+        "Nein",
+        "Teilweise",
+        "Nicht Relevant"
+      ]
+    },
+    "EinschaetzungDatenschutz": {
+      "type": "enumeration",
+      "enum": [
+        "Ja",
+        "Nein",
+        "Teilweise",
+        "Nicht Relevant"
+      ]
+    },
+    "EinschaetzungKlareRegelungen": {
+      "type": "enumeration",
+      "enum": [
+        "Ja",
+        "Nein",
+        "Teilweise",
+        "Nicht Relevant"
+      ]
+    },
+    "EinschaetzungAutomatisierung": {
+      "type": "enumeration",
+      "enum": [
+        "Ja",
+        "Nein",
+        "Teilweise",
+        "Nicht Relevant"
+      ]
+    },
+    "Visualisierungen": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.visualisierung"
+    },
+    "Paragraphen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::paragraph.paragraph",
+      "mappedBy": "Digitalcheck"
+    },
     "Regelungsvorhaben": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::regelungsvorhaben.regelungsvorhaben",
-      "inversedBy": "Digitalcheck"
+      "inversedBy": "Digitalchecks"
     }
   }
 }

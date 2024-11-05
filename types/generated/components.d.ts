@@ -1,17 +1,18 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedParagraph extends Struct.ComponentSchema {
-  collectionName: 'components_shared_paragraphs';
+export interface SharedAbsatz extends Struct.ComponentSchema {
+  collectionName: 'components_shared_absatzs';
   info: {
     description: '';
-    displayName: 'Paragraph';
-    icon: 'book';
+    displayName: 'Absatz';
+    icon: 'layer';
   };
   attributes: {
-    Norm: Schema.Attribute.String & Schema.Attribute.Required;
-    Regelungstext: Schema.Attribute.RichText & Schema.Attribute.Required;
-    Tags: Schema.Attribute.Component<'shared.tag', true>;
-    WarumWichtig: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Nummer: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<1>;
+    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
@@ -23,11 +24,10 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    EinschaetzungReferat: Schema.Attribute.Enumeration<
-      ['Ja', 'Nein', 'Teilweise', 'Nicht relevant']
-    > &
-      Schema.Attribute.Required;
-    Paragraphen: Schema.Attribute.Component<'shared.paragraph', true>;
+    KontextEnde: Schema.Attribute.Integer;
+    KontextStart: Schema.Attribute.Integer;
+    Prinzip: Schema.Attribute.Integer & Schema.Attribute.Required;
+    WarumGut: Schema.Attribute.Blocks;
   };
 }
 
@@ -75,7 +75,7 @@ export interface SharedVisualisierung extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.paragraph': SharedParagraph;
+      'shared.absatz': SharedAbsatz;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
       'shared.seo': SharedSeo;
       'shared.tag': SharedTag;

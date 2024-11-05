@@ -63,14 +63,14 @@
     "VeroeffentlichungsDatum": {
       "type": "date"
     },
-    "NKRStellungnahmeRegelungText": {
-      "type": "richtext"
-    },
-    "Digitalcheck": {
+    "Digitalchecks": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::digitalcheck.digitalcheck",
       "mappedBy": "Regelungsvorhaben"
+    },
+    "NKRStellungnahmeText": {
+      "type": "blocks"
     }
   }
 }

@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "paragraphs",
+  "info": {
+    "singularName": "paragraph",
+    "pluralName": "paragraphs",
+    "displayName": "Paragraph",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titel": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Absaetze": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.absatz",
+      "required": true
+    },
+    "Digitalcheck": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::digitalcheck.digitalcheck",
+      "inversedBy": "Paragraphen"
+    }
+  }
+}

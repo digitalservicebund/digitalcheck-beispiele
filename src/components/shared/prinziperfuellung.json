@@ -7,20 +7,18 @@
   },
   "options": {},
   "attributes": {
-    "EinschaetzungReferat": {
-      "type": "enumeration",
-      "enum": [
-        "Ja",
-        "Nein",
-        "Teilweise",
-        "Nicht relevant"
-      ],
+    "Prinzip": {
+      "type": "integer",
       "required": true
     },
-    "Paragraphen": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.paragraph"
+    "WarumGut": {
+      "type": "blocks"
+    },
+    "KontextStart": {
+      "type": "integer"
+    },
+    "KontextEnde": {
+      "type": "integer"
     }
   }
 }

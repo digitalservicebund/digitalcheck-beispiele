@@ -382,21 +382,23 @@ export interface ApiDigitalcheckDigitalcheck
     draftAndPublish: true;
   };
   attributes: {
-    Automatisierung: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Datenschutz: Schema.Attribute.Component<'shared.prinziperfuellung', false>;
-    DigitaleKommunikation: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
+    EinschaetzungAutomatisierung: Schema.Attribute.Enumeration<
+      ['Ja', 'Nein', 'Teilweise', 'Nicht Relevant']
     >;
-    KlareRegelungen: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
+    EinschaetzungDatenschutz: Schema.Attribute.Enumeration<
+      ['Ja', 'Nein', 'Teilweise', 'Nicht Relevant']
+    >;
+    EinschaetzungKlareRegelungen: Schema.Attribute.Enumeration<
+      ['Ja', 'Nein', 'Teilweise', 'Nicht Relevant']
+    >;
+    EinschaetzungKommunikation: Schema.Attribute.Enumeration<
+      ['Ja', 'Nein', 'Teilweise', 'Nicht Relevant']
+    >;
+    EinschaetzungWiederverwendung: Schema.Attribute.Enumeration<
+      ['Ja', 'Nein', 'Teilweise', 'Nicht Relevant']
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -405,6 +407,10 @@ export interface ApiDigitalcheckDigitalcheck
     > &
       Schema.Attribute.Private;
     NKRStellungnahmeDCText: Schema.Attribute.Blocks;
+    Paragraphen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::paragraph.paragraph'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     Regelungsvorhaben: Schema.Attribute.Relation<
       'manyToOne',
@@ -413,16 +419,12 @@ export interface ApiDigitalcheckDigitalcheck
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Visualisierung: Schema.Attribute.Component<'shared.visualisierung', false>;
+    Visualisierungen: Schema.Attribute.Component<'shared.visualisierung', true>;
     VorpruefungAutomatisierung: Schema.Attribute.Boolean;
     VorpruefungDatenaustausch: Schema.Attribute.Boolean;
     VorpruefungITSystem: Schema.Attribute.Boolean;
     VorpruefungKommunikation: Schema.Attribute.Boolean;
     VorpruefungVerpflichtungen: Schema.Attribute.Boolean;
-    Wiederverwendung: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      false
-    >;
   };
 }
 
@@ -458,6 +460,43 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
+  collectionName: 'paragraphs';
+  info: {
+    description: '';
+    displayName: 'Paragraph';
+    pluralName: 'paragraphs';
+    singularName: 'paragraph';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Absaetze: Schema.Attribute.Component<'shared.absatz', true> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Digitalcheck: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::digitalcheck.digitalcheck'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::paragraph.paragraph'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
   collectionName: 'prinzips';
   info: {
@@ -474,7 +513,7 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    GuteUmsetzung: Schema.Attribute.Relation<
+    GuteUmsetzungen: Schema.Attribute.Relation<
       'oneToMany',
       'api::digitalcheck.digitalcheck'
     >;
@@ -512,7 +551,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Digitalcheck: Schema.Attribute.Relation<
+    Digitalchecks: Schema.Attribute.Relation<
       'oneToMany',
       'api::digitalcheck.digitalcheck'
     >;
@@ -525,7 +564,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       Schema.Attribute.Private;
     NKRNummer: Schema.Attribute.Integer & Schema.Attribute.Required;
     NKRStellungnahmeLink: Schema.Attribute.String;
-    NKRStellungnahmeRegelungText: Schema.Attribute.RichText;
+    NKRStellungnahmeText: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
     Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     Ressort: Schema.Attribute.Enumeration<
@@ -1066,6 +1105,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::digitalcheck.digitalcheck': ApiDigitalcheckDigitalcheck;
       'api::global.global': ApiGlobalGlobal;
+      'api::paragraph.paragraph': ApiParagraphParagraph;
       'api::prinzip.prinzip': ApiPrinzipPrinzip;
       'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;
       'plugin::content-releases.release': PluginContentReleasesRelease;
