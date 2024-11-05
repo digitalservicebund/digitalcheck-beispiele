@@ -10,6 +10,11 @@
     "Text": {
       "type": "blocks",
       "required": true
+    },
+    "PrinzipErfuellung": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.prinziperfuellung"
     }
   }
 }
