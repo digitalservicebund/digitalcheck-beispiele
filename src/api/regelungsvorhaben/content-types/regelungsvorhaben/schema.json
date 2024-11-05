@@ -71,6 +71,10 @@
     },
     "NKRStellungnahmeText": {
       "type": "blocks"
+    },
+    "LinkRegelungstext": {
+      "type": "string",
+      "required": true
     }
   }
 }
