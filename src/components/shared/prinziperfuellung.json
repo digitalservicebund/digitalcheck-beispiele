@@ -8,11 +8,18 @@
   "options": {},
   "attributes": {
     "Prinzip": {
-      "type": "integer",
-      "required": true
+      "type": "enumeration",
+      "enum": [
+        "DigitaleKommunikation",
+        "Wiederverwendung",
+        "Datenschutz",
+        "KlareRegelungen",
+        "Automatisierung"
+      ]
     },
     "WarumGut": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     },
     "KontextStart": {
       "type": "integer"

@@ -8,6 +8,10 @@ export interface SharedAbsatz extends Struct.ComponentSchema {
     icon: 'layer';
   };
   attributes: {
+    PrinzipErfuellung: Schema.Attribute.Component<
+      'shared.prinziperfuellung',
+      true
+    >;
     Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
@@ -22,8 +26,16 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   attributes: {
     KontextEnde: Schema.Attribute.Integer;
     KontextStart: Schema.Attribute.Integer;
-    Prinzip: Schema.Attribute.Integer & Schema.Attribute.Required;
-    WarumGut: Schema.Attribute.Blocks;
+    Prinzip: Schema.Attribute.Enumeration<
+      [
+        'DigitaleKommunikation',
+        'Wiederverwendung',
+        'Datenschutz',
+        'KlareRegelungen',
+        'Automatisierung',
+      ]
+    >;
+    WarumGut: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
 
