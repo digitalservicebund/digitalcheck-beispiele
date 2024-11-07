@@ -8,7 +8,7 @@ export interface SharedAbsatz extends Struct.ComponentSchema {
     icon: 'layer';
   };
   attributes: {
-    PrinzipErfuellung: Schema.Attribute.Component<
+    PrinzipErfuellungen: Schema.Attribute.Component<
       'shared.prinziperfuellung',
       true
     >;
