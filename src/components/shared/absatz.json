@@ -11,7 +11,7 @@
       "type": "blocks",
       "required": true
     },
-    "PrinzipErfuellung": {
+    "PrinzipErfuellungen": {
       "type": "component",
       "repeatable": true,
       "component": "shared.prinziperfuellung"
