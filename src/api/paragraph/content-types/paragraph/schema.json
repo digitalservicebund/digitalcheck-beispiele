@@ -12,22 +12,31 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titel": {
+    "Nummer": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
-    "Absaetze": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.absatz",
+    "Gesetz": {
+      "type": "string",
       "required": true
+    },
+    "Namen": {
+      "type": "string"
+    },
+    "Artikel": {
+      "type": "string"
     },
     "Digitalcheck": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::digitalcheck.digitalcheck",
       "inversedBy": "Paragraphen"
+    },
+    "Absaetze": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.absatz"
     }
   }
 }

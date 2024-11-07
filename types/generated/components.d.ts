@@ -66,20 +66,6 @@ export interface SharedTag extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedVisualisierung extends Struct.ComponentSchema {
-  collectionName: 'components_shared_visualisierungs';
-  info: {
-    description: '';
-    displayName: 'Visualisierung';
-    icon: 'picture';
-  };
-  attributes: {
-    Beschreibung: Schema.Attribute.Blocks;
-    Bild: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    VisualisierungsArt: Schema.Attribute.String;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -87,7 +73,6 @@ declare module '@strapi/strapi' {
       'shared.prinziperfuellung': SharedPrinziperfuellung;
       'shared.seo': SharedSeo;
       'shared.tag': SharedTag;
-      'shared.visualisierung': SharedVisualisierung;
     }
   }
 }

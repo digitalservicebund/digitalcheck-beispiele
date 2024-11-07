@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visualisierungen",
+  "info": {
+    "singularName": "visualisierung",
+    "pluralName": "visualisierungen",
+    "displayName": "Visualisierung"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Bild": {
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "Titel": {
+      "type": "string",
+      "required": true
+    },
+    "Visualisierungsart": {
+      "type": "string"
+    },
+    "Visualisierungstool": {
+      "type": "string"
+    },
+    "Beschreibung": {
+      "type": "blocks",
+      "required": true
+    },
+    "Digitalcheck": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::digitalcheck.digitalcheck",
+      "inversedBy": "Visualisierungen"
+    }
+  }
+}

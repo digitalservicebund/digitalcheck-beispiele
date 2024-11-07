@@ -75,17 +75,6 @@
         "Nicht Relevant"
       ]
     },
-    "Visualisierungen": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.visualisierung"
-    },
-    "Paragraphen": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::paragraph.paragraph",
-      "mappedBy": "Digitalcheck"
-    },
     "Regelungsvorhaben": {
       "type": "relation",
       "relation": "manyToOne",
@@ -96,6 +85,18 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "Paragraphen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::paragraph.paragraph",
+      "mappedBy": "Digitalcheck"
+    },
+    "Visualisierungen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::visualisierung.visualisierung",
+      "mappedBy": "Digitalcheck"
     }
   }
 }

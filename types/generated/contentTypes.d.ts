@@ -422,7 +422,10 @@ export interface ApiDigitalcheckDigitalcheck
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Visualisierungen: Schema.Attribute.Component<'shared.visualisierung', true>;
+    Visualisierungen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visualisierung.visualisierung'
+    >;
     VorpruefungAutomatisierung: Schema.Attribute.Boolean;
     VorpruefungDatenaustausch: Schema.Attribute.Boolean;
     VorpruefungITSystem: Schema.Attribute.Boolean;
@@ -475,8 +478,8 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Absaetze: Schema.Attribute.Component<'shared.absatz', true> &
-      Schema.Attribute.Required;
+    Absaetze: Schema.Attribute.Component<'shared.absatz', true>;
+    Artikel: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -484,16 +487,16 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::digitalcheck.digitalcheck'
     >;
+    Gesetz: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::paragraph.paragraph'
     > &
       Schema.Attribute.Private;
+    Namen: Schema.Attribute.String;
+    Nummer: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    Titel: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -568,7 +571,6 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       Schema.Attribute.Private;
     NKRNummer: Schema.Attribute.Integer & Schema.Attribute.Required;
     NKRStellungnahmeLink: Schema.Attribute.String;
-    NKRStellungnahmeText: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
     Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     Ressort: Schema.Attribute.Enumeration<
@@ -599,6 +601,44 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       Schema.Attribute.Private;
     URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
     VeroeffentlichungsDatum: Schema.Attribute.Date;
+  };
+}
+
+export interface ApiVisualisierungVisualisierung
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'visualisierungen';
+  info: {
+    displayName: 'Visualisierung';
+    pluralName: 'visualisierungen';
+    singularName: 'visualisierung';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Bild: Schema.Attribute.Media<'files' | 'images'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Digitalcheck: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::digitalcheck.digitalcheck'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visualisierung.visualisierung'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titel: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Visualisierungsart: Schema.Attribute.String;
+    Visualisierungstool: Schema.Attribute.String;
   };
 }
 
@@ -1112,6 +1152,7 @@ declare module '@strapi/strapi' {
       'api::paragraph.paragraph': ApiParagraphParagraph;
       'api::prinzip.prinzip': ApiPrinzipPrinzip;
       'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;
+      'api::visualisierung.visualisierung': ApiVisualisierungVisualisierung;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

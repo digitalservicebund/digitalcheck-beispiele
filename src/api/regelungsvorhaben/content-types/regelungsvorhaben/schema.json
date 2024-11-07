@@ -69,9 +69,6 @@
       "target": "api::digitalcheck.digitalcheck",
       "mappedBy": "Regelungsvorhaben"
     },
-    "NKRStellungnahmeText": {
-      "type": "blocks"
-    },
     "LinkRegelungstext": {
       "type": "string",
       "required": true
