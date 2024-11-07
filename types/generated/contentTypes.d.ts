@@ -559,6 +559,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       'api::digitalcheck.digitalcheck'
     >;
     DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
+    LinkRegelungstext: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
