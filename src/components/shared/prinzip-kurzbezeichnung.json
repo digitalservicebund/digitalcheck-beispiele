@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_prinzip_kurzbezeichnungs",
+  "info": {
+    "displayName": "PrinzipKurzbezeichnung",
+    "icon": "quote",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "enumeration",
+      "enum": [
+        "DigitaleKommunikation",
+        "Wiederverwendung",
+        "Datenschutz",
+        "KlareRegelungen",
+        "Automatisierung"
+      ]
+    }
+  }
+}
