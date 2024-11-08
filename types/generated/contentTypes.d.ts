@@ -523,6 +523,11 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::digitalcheck.digitalcheck'
     >;
+    Kurzbezeichnung: Schema.Attribute.Component<
+      'shared.prinzip-kurzbezeichnung',
+      false
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

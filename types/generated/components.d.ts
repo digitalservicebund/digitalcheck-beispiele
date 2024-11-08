@@ -16,6 +16,26 @@ export interface SharedAbsatz extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedPrinzipKurzbezeichnung extends Struct.ComponentSchema {
+  collectionName: 'components_shared_prinzip_kurzbezeichnungs';
+  info: {
+    description: '';
+    displayName: 'PrinzipKurzbezeichnung';
+    icon: 'quote';
+  };
+  attributes: {
+    Name: Schema.Attribute.Enumeration<
+      [
+        'DigitaleKommunikation',
+        'Wiederverwendung',
+        'Datenschutz',
+        'KlareRegelungen',
+        'Automatisierung',
+      ]
+    >;
+  };
+}
+
 export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinziperfuellungs';
   info: {
@@ -26,15 +46,11 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   attributes: {
     KontextEnde: Schema.Attribute.Integer;
     KontextStart: Schema.Attribute.Integer;
-    Prinzip: Schema.Attribute.Enumeration<
-      [
-        'DigitaleKommunikation',
-        'Wiederverwendung',
-        'Datenschutz',
-        'KlareRegelungen',
-        'Automatisierung',
-      ]
-    >;
+    Prinzip: Schema.Attribute.Component<
+      'shared.prinzip-kurzbezeichnung',
+      false
+    > &
+      Schema.Attribute.Required;
     WarumGut: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
@@ -70,6 +86,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.absatz': SharedAbsatz;
+      'shared.prinzip-kurzbezeichnung': SharedPrinzipKurzbezeichnung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
       'shared.seo': SharedSeo;
       'shared.tag': SharedTag;

@@ -7,16 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "Prinzip": {
-      "type": "enumeration",
-      "enum": [
-        "DigitaleKommunikation",
-        "Wiederverwendung",
-        "Datenschutz",
-        "KlareRegelungen",
-        "Automatisierung"
-      ]
-    },
     "WarumGut": {
       "type": "blocks",
       "required": true
@@ -26,6 +16,12 @@
     },
     "KontextEnde": {
       "type": "integer"
+    },
+    "Prinzip": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinzip-kurzbezeichnung",
+      "required": true
     }
   }
 }

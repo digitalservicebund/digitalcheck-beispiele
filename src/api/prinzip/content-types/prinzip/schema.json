@@ -34,6 +34,13 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::digitalcheck.digitalcheck"
+    },
+    "Kurzbezeichnung": {
+      "displayName": "PrinzipKurzbezeichnung",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.prinzip-kurzbezeichnung",
+      "required": true
     }
   }
 }
