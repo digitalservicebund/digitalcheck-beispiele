@@ -21,7 +21,7 @@
       "type": "string",
       "required": true
     },
-    "Namen": {
+    "Titel": {
       "type": "string"
     },
     "Artikel": {

@@ -494,9 +494,9 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
       'api::paragraph.paragraph'
     > &
       Schema.Attribute.Private;
-    Namen: Schema.Attribute.String;
     Nummer: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    Titel: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
