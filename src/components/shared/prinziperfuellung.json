@@ -1,7 +1,7 @@
 {
   "collectionName": "components_shared_prinziperfuellungs",
   "info": {
-    "displayName": "Prinziperfüllung",
+    "displayName": "PrinzipErfüllung",
     "icon": "bulletList",
     "description": ""
   },
@@ -18,10 +18,9 @@
       "type": "integer"
     },
     "Prinzip": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.prinzip-kurzbezeichnung",
-      "required": true
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::prinzip.prinzip"
     }
   }
 }

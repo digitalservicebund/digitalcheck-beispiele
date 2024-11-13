@@ -40,17 +40,13 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinziperfuellungs';
   info: {
     description: '';
-    displayName: 'Prinziperf\u00FCllung';
+    displayName: 'PrinzipErf\u00FCllung';
     icon: 'bulletList';
   };
   attributes: {
     KontextEnde: Schema.Attribute.Integer;
     KontextStart: Schema.Attribute.Integer;
-    Prinzip: Schema.Attribute.Component<
-      'shared.prinzip-kurzbezeichnung',
-      false
-    > &
-      Schema.Attribute.Required;
+    Prinzip: Schema.Attribute.Relation<'oneToOne', 'api::prinzip.prinzip'>;
     WarumGut: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
 }
