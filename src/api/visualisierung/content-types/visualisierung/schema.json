@@ -33,6 +33,12 @@
     "Beschreibung": {
       "type": "blocks",
       "required": true
+    },
+    "Digitalcheck": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::digitalcheck.digitalcheck",
+      "inversedBy": "Visualisierungen"
     }
   }
 }

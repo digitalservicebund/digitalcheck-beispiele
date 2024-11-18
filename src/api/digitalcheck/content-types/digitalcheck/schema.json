@@ -91,6 +91,12 @@
       "relation": "oneToMany",
       "target": "api::paragraph.paragraph",
       "mappedBy": "Digitalcheck"
+    },
+    "Visualisierungen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::visualisierung.visualisierung",
+      "mappedBy": "Digitalcheck"
     }
   }
 }

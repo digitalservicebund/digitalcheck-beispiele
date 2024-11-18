@@ -422,6 +422,10 @@ export interface ApiDigitalcheckDigitalcheck
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Visualisierungen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visualisierung.visualisierung'
+    >;
     VorpruefungAutomatisierung: Schema.Attribute.Boolean;
     VorpruefungDatenaustausch: Schema.Attribute.Boolean;
     VorpruefungITSystem: Schema.Attribute.Boolean;
@@ -623,6 +627,10 @@ export interface ApiVisualisierungVisualisierung
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Digitalcheck: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::digitalcheck.digitalcheck'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
