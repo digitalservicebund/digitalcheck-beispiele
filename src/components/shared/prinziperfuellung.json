@@ -11,12 +11,6 @@
       "type": "blocks",
       "required": true
     },
-    "KontextStart": {
-      "type": "integer"
-    },
-    "KontextEnde": {
-      "type": "integer"
-    },
     "Prinzip": {
       "type": "relation",
       "relation": "oneToOne",

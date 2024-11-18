@@ -44,8 +44,6 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    KontextEnde: Schema.Attribute.Integer;
-    KontextStart: Schema.Attribute.Integer;
     Prinzip: Schema.Attribute.Relation<'oneToOne', 'api::prinzip.prinzip'>;
     WarumGut: Schema.Attribute.Blocks & Schema.Attribute.Required;
   };
