@@ -1,21 +1,39 @@
-const {KeyvAdapter} = require("@apollo/utils.keyvadapter");
-const { default: Keyv } = require('keyv');
+const apolloServerPluginResponseCache =
+    require("@apollo/server-plugin-response-cache").default;
+const ApolloServerPluginCacheControl =
+    require("apollo-server-core").ApolloServerPluginCacheControl;
 
-module.exports = () => ({
-    graphql: {
-        shadowCRUD: true,
-        enabled: true,
-        config: {
-            playgroundAlways: true,
-            defaultLimit: 10,
-            maxLimit: 20,
-            apolloServer: {
-                tracing: true,
-                cache: new KeyvAdapter(new Keyv()),
-                plugins: [
-                    require('apollo-server-plugin-response-cache').default(),
-                ],
-            },
+module.exports = ({ env }) => {
+    return {
+        graphql: {
+            enabled: true,
+            config: {
+                playgroundAlways: true,
+                defaultLimit: 20,
+                maxLimit: -1,
+                apolloServer: {
+                    tracing: true,
+                    plugins: [
+                        ApolloServerPluginCacheControl({
+                            defaultMaxAge: 60,
+                        }),
+                        apolloServerPluginResponseCache({
+                            shouldReadFromCache: async (requestContext) => {
+                                return true;
+                            },
+                            shouldWriteToCache: async (requestContext) => {
+                                return true;
+                            },
+                            extraCacheKeyData: async (requestContext) => {
+                                return true;
+                            },
+                            sessionId: async (requestContext) => {
+                                return null;
+                            },
+                        }),
+                    ]
+                }
+            }
         }
     }
-})
+}
