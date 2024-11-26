@@ -1,3 +1,5 @@
+const {KeyvAdapter} = require("@apollo/utils.keyvadapter");
+const { default: Keyv } = require('keyv');
 
 module.exports = () => ({
     graphql: {
@@ -9,8 +11,10 @@ module.exports = () => ({
             maxLimit: 20,
             apolloServer: {
                 tracing: true,
-                cache: 'bounded',
-                plugins: [require('apollo-server-plugin-response-cache').default()],
+                cache: new KeyvAdapter(new Keyv()),
+                plugins: [
+                    require('apollo-server-plugin-response-cache').default(),
+                ],
             },
         }
     }
