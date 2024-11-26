@@ -1,39 +1,32 @@
-const apolloServerPluginResponseCache =
-    require("@apollo/server-plugin-response-cache").default;
-const ApolloServerPluginCacheControl =
-    require("apollo-server-core").ApolloServerPluginCacheControl;
+const { print, parse } = require("graphql");
+const apolloServerPluginResponseCache = require("@apollo/server-plugin-response-cache").default;
 
-module.exports = ({ env }) => {
-    return {
-        graphql: {
-            enabled: true,
-            config: {
-                playgroundAlways: true,
-                defaultLimit: 20,
-                maxLimit: -1,
-                apolloServer: {
-                    tracing: true,
-                    plugins: [
-                        ApolloServerPluginCacheControl({
-                            defaultMaxAge: 60,
-                        }),
-                        apolloServerPluginResponseCache({
-                            shouldReadFromCache: async (requestContext) => {
-                                return true;
-                            },
-                            shouldWriteToCache: async (requestContext) => {
-                                return true;
-                            },
-                            extraCacheKeyData: async (requestContext) => {
-                                return true;
-                            },
-                            sessionId: async (requestContext) => {
-                                return null;
-                            },
-                        }),
-                    ]
-                }
-            }
-        }
-    }
-}
+module.exports = ({ env }) => ({
+    graphql: {
+        enabled: true,
+        config: {
+            playgroundAlways: true,
+            defaultLimit: 20,
+            maxLimit: -1,
+            apolloServer: {
+                plugins: [
+                    apolloServerPluginResponseCache({
+                        sessionId: async (requestContext) => {
+                            // Use a global cache (returning null)
+                            return null;
+                        },
+                        shouldReadFromCache: async (requestContext) => {
+                            console.log("Checking cache read for query:", print(parse(requestContext.request.query)));
+                            return true;
+                        },
+                        shouldWriteToCache: async (requestContext) => {
+                            console.log("Checking cache write for query:", print(parse(requestContext.request.query)));
+                            console.log("Response to cache:", requestContext.response.body);
+                            return true;
+                        },
+                    }),
+                ],
+            },
+        },
+    },
+});
