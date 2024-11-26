@@ -1,6 +1,7 @@
 
 module.exports = () => ({
     graphql: {
+        shadowCRUD: true,
         enabled: true,
         config: {
             playgroundAlways: true,
@@ -8,7 +9,8 @@ module.exports = () => ({
             maxLimit: 20,
             apolloServer: {
                 tracing: true,
-                cache: 'bounded'
+                cache: 'bounded',
+                plugins: [require('apollo-server-plugin-response-cache').default()],
             },
         }
     }
