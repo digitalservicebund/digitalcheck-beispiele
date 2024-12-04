@@ -1,6 +1,6 @@
 const ApolloServerPluginCacheControl = require('@apollo/server/plugin/cacheControl').ApolloServerPluginCacheControl;
-const apolloServerPluginResponseCache =
-  require("@apollo/server-plugin-response-cache").default;
+// const apolloServerPluginResponseCache =
+//   require("@apollo/server-plugin-response-cache").default;
 
 module.exports = () => ({
     graphql: {
