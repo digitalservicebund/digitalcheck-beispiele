@@ -12,7 +12,7 @@ module.exports = () => ({
                 tracing: true,
                 plugins: [
                     ApolloServerPluginCacheControl({
-                        defaultMaxAge: 3600,
+                        defaultMaxAge: 3333,
                     }),
                     apolloServerPluginResponseCache({
                         shouldReadFromCache: async (requestContext) => {
