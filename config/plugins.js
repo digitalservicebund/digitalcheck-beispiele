@@ -1,4 +1,6 @@
 const ApolloServerPluginCacheControl = require('@apollo/server/plugin/cacheControl').ApolloServerPluginCacheControl;
+const apolloServerPluginResponseCache =
+  require("@apollo/server-plugin-response-cache").default;
 
 module.exports = () => ({
     graphql: {
@@ -10,11 +12,22 @@ module.exports = () => ({
                 tracing: true,
                 plugins: [
                     ApolloServerPluginCacheControl({
-                        // Cache everything for 1 second by default.
                         defaultMaxAge: 3600,
-                        // Don't send the `cache-control` response header.
-                        // calculateHttpHeaders: false,
-                      }),
+                    }),
+                    apolloServerPluginResponseCache({
+                        shouldReadFromCache: async (requestContext) => {
+                         return true;
+                        },
+                        shouldWriteToCache: async (requestContext) => {
+                         return true;
+                        },
+                        extraCacheKeyData: async (requestContext) => {
+                         return true;
+                        },
+                        sessionId: async (requestContext) => {
+                         return null;
+                        },
+                    }),
                 ]
             },
         },
