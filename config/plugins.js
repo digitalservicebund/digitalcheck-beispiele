@@ -1,5 +1,6 @@
 const ApolloServerPluginCacheControl = require('@apollo/server/plugin/cacheControl').ApolloServerPluginCacheControl;
 const ApolloServerPluginInlineTrace = require('@apollo/server/plugin/inlineTrace').ApolloServerPluginInlineTrace;
+const responseCachePlugin = require('@apollo/server-plugin-response-cache').default;
 
 module.exports = () => ({
     graphql: {
@@ -13,10 +14,11 @@ module.exports = () => ({
                     ApolloServerPluginInlineTrace({
                         includeErrors: { transform: (err) => err },
                       }),
-                //     ApolloServerPluginCacheControl({
-                //         defaultMaxAge: 3333,
-                //         calculateHttpHeaders: true,
-                //     }),
+                    ApolloServerPluginCacheControl({
+                        defaultMaxAge: 3600,
+                        calculateHttpHeaders: true,
+                    }),
+                    responseCachePlugin(),
                 ],
             },
         },
