@@ -14,10 +14,9 @@ module.exports = () => ({
                     ApolloServerPluginInlineTrace({
                         includeErrors: { transform: (err) => err },
                       }),
-                    ApolloServerPluginCacheControl({
-                        defaultMaxAge: 3600,
-                        calculateHttpHeaders: true,
-                    }),
+                    // ApolloServerPluginCacheControl({
+                    //     defaultMaxAge: 3600,
+                    // }),
                     responseCachePlugin(),
                 ],
             },
