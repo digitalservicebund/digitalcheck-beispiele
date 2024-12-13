@@ -567,7 +567,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       'api::digitalcheck.digitalcheck'
     >;
     DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Gesetzstatus: Schema.Attribute.Enumeration<
+    GesetzStatus: Schema.Attribute.Enumeration<
       [
         'Regelungsentwurf',
         'Text im Parlament',

@@ -73,7 +73,7 @@
       "type": "string",
       "required": true
     },
-    "Gesetzstatus": {
+    "GesetzStatus": {
       "type": "enumeration",
       "enum": [
         "Regelungsentwurf",
