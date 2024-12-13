@@ -72,6 +72,14 @@
     "LinkRegelungstext": {
       "type": "string",
       "required": true
+    },
+    "Gesetzstatus": {
+      "type": "enumeration",
+      "enum": [
+        "Regelungsentwurf",
+        "Text im Parlament",
+        "Verkündetes Gesetz (aktuelle Fassung)"
+      ]
     }
   }
 }
