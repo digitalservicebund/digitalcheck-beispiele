@@ -581,6 +581,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       'api::regelungsvorhaben.regelungsvorhaben'
     > &
       Schema.Attribute.Private;
+    Manteltext: Schema.Attribute.Blocks;
     NKRNummer: Schema.Attribute.Integer & Schema.Attribute.Required;
     NKRStellungnahmeLink: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;

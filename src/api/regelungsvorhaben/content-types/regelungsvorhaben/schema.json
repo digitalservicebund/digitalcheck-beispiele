@@ -80,6 +80,9 @@
         "Text im Parlament",
         "Verkündetes Gesetz (aktuelle Fassung)"
       ]
+    },
+    "Manteltext": {
+      "type": "blocks"
     }
   }
 }
