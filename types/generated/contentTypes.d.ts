@@ -34,6 +34,10 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }> &
       Schema.Attribute.DefaultTo<''>;
+    encryptedKey: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     expiresAt: Schema.Attribute.DateTime;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
@@ -523,11 +527,7 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::digitalcheck.digitalcheck'
     >;
-    Kurzbezeichnung: Schema.Attribute.Component<
-      'shared.prinzip-kurzbezeichnung',
-      false
-    > &
-      Schema.Attribute.Required;
+    Kurzbezeichnung: Schema.Attribute.String & Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
