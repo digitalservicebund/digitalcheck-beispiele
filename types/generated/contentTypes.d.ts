@@ -527,7 +527,9 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::digitalcheck.digitalcheck'
     >;
-    Kurzbezeichnung: Schema.Attribute.String & Schema.Attribute.Unique;
+    Kurzbezeichnung: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -538,6 +540,9 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     Nummer: Schema.Attribute.Integer & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<1>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

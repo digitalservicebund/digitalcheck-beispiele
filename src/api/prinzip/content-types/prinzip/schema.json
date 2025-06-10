@@ -37,8 +37,13 @@
     },
     "Kurzbezeichnung": {
       "type": "string",
-      "required": false,
+      "required": true,
       "unique": true
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 1
     }
   }
 }
