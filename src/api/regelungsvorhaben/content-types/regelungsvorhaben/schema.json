@@ -19,24 +19,24 @@
     },
     "Ressort": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "AA",
         "BMAS",
         "BMBF",
-        "BMDV",
+        "BMV",
         "BMEL",
         "BMF",
         "BMFSFJ",
         "BMG",
         "BMI",
-        "BMJ",
+        "BMJV",
         "BMUV",
         "BMVg",
-        "BMWK",
+        "BMWE",
         "BMWSB",
         "BMZ"
-      ],
-      "required": true
+      ]
     },
     "NKRStellungnahmeLink": {
       "type": "string"
