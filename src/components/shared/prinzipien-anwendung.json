@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_prinzipien_anwendungs",
+  "info": {
+    "displayName": "PrinzipienAnwendung",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Content": {
+      "type": "blocks",
+      "required": true
+    },
+    "Example": {
+      "type": "component",
+      "component": "shared.example-absatz",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

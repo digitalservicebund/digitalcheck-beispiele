@@ -16,6 +16,21 @@ export interface SharedAbsatz extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedExampleAbsatz extends Struct.ComponentSchema {
+  collectionName: 'components_shared_example_absatzs';
+  info: {
+    displayName: 'ExampleAbsatz';
+    icon: 'handHeart';
+  };
+  attributes: {
+    AbsatzNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
+    Paragraph: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::paragraph.paragraph'
+    >;
+  };
+}
+
 export interface SharedPrinzipKurzbezeichnung extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinzip_kurzbezeichnungs';
   info: {
@@ -46,6 +61,21 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   attributes: {
     Prinzip: Schema.Attribute.Relation<'oneToOne', 'api::prinzip.prinzip'>;
     WarumGut: Schema.Attribute.Blocks & Schema.Attribute.Required;
+  };
+}
+
+export interface SharedPrinzipienAnwendung extends Struct.ComponentSchema {
+  collectionName: 'components_shared_prinzipien_anwendungs';
+  info: {
+    displayName: 'PrinzipienAnwendung';
+    icon: 'bulletList';
+  };
+  attributes: {
+    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Example: Schema.Attribute.Component<'shared.example-absatz', false>;
+    Title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
   };
 }
 
@@ -80,8 +110,10 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.absatz': SharedAbsatz;
+      'shared.example-absatz': SharedExampleAbsatz;
       'shared.prinzip-kurzbezeichnung': SharedPrinzipKurzbezeichnung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
+      'shared.prinzipien-anwendung': SharedPrinzipienAnwendung;
       'shared.seo': SharedSeo;
       'shared.tag': SharedTag;
     }

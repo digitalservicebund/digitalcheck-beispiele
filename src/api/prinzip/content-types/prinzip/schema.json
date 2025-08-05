@@ -44,6 +44,16 @@
       "type": "integer",
       "required": true,
       "default": 1
+    },
+    "PrinzipienAnwendung": {
+      "type": "component",
+      "component": "shared.prinzipien-anwendung",
+      "repeatable": true
+    },
+    "Example": {
+      "type": "component",
+      "component": "shared.example-absatz",
+      "repeatable": false
     }
   }
 }
