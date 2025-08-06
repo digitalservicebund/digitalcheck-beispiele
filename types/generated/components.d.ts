@@ -71,11 +71,13 @@ export interface SharedPrinzipienAnwendung extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Example: Schema.Attribute.Component<'shared.example-absatz', false>;
+    Questions: Schema.Attribute.Blocks;
+    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    WordingExample: Schema.Attribute.Blocks;
   };
 }
 
