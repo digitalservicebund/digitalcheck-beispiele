@@ -25,6 +25,11 @@
       "type": "component",
       "component": "shared.example-absatz",
       "repeatable": false
+    },
+    "Beispiel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::absatz.absatz"
     }
   },
   "config": {}

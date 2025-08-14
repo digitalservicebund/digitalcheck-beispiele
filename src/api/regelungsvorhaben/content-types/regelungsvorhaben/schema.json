@@ -43,11 +43,11 @@
     },
     "DIPVorgang": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "NKRNummer": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "URLBezeichnung": {
       "type": "uid",
@@ -83,6 +83,18 @@
     },
     "Manteltext": {
       "type": "blocks"
+    },
+    "Paragraphen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::paragraph.paragraph",
+      "mappedBy": "Beispielvorhaben"
+    },
+    "Visualisierungen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::visualisierung.visualisierung",
+      "mappedBy": "Beispielvorhaben"
     }
   }
 }

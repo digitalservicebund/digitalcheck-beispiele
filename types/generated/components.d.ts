@@ -71,6 +71,7 @@ export interface SharedPrinzipienAnwendung extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
+    Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
     Example: Schema.Attribute.Component<'shared.example-absatz', false>;
     Questions: Schema.Attribute.Blocks;
     Text: Schema.Attribute.Blocks & Schema.Attribute.Required;

@@ -12,13 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "Bild": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "files",
         "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "Titel": {
       "type": "string",
@@ -38,6 +38,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::digitalcheck.digitalcheck",
+      "inversedBy": "Visualisierungen"
+    },
+    "Beispielvorhaben": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regelungsvorhaben.regelungsvorhaben",
       "inversedBy": "Visualisierungen"
     }
   }

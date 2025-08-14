@@ -54,6 +54,16 @@
       "type": "component",
       "component": "shared.example-absatz",
       "repeatable": false
+    },
+    "Beispielvorhaben": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regelungsvorhaben.regelungsvorhaben"
+    },
+    "Beispiel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::absatz.absatz"
     }
   }
 }

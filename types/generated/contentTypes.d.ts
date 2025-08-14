@@ -373,6 +373,43 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAbsatzAbsatz extends Struct.CollectionTypeSchema {
+  collectionName: 'absaetze';
+  info: {
+    displayName: 'Absatz';
+    pluralName: 'absaetze';
+    singularName: 'absatz';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::absatz.absatz'
+    > &
+      Schema.Attribute.Private;
+    Nummer: Schema.Attribute.Integer & Schema.Attribute.Required;
+    Paragraph: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::paragraph.paragraph'
+    >;
+    PrinzipErfuellungen: Schema.Attribute.Component<
+      'shared.prinziperfuellung',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDigitalcheckDigitalcheck
   extends Struct.CollectionTypeSchema {
   collectionName: 'digitalchecks';
@@ -483,7 +520,12 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Absaetze: Schema.Attribute.Component<'shared.absatz', true>;
+    Absatz: Schema.Attribute.Relation<'oneToMany', 'api::absatz.absatz'>;
     Artikel: Schema.Attribute.String;
+    Beispielvorhaben: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -519,6 +561,11 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
+    Beispielvorhaben: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -576,7 +623,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       'oneToMany',
       'api::digitalcheck.digitalcheck'
     >;
-    DIPVorgang: Schema.Attribute.Integer & Schema.Attribute.Required;
+    DIPVorgang: Schema.Attribute.Integer;
     GesetzStatus: Schema.Attribute.Enumeration<
       [
         'Regelungsentwurf',
@@ -592,8 +639,12 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     > &
       Schema.Attribute.Private;
     Manteltext: Schema.Attribute.Blocks;
-    NKRNummer: Schema.Attribute.Integer & Schema.Attribute.Required;
+    NKRNummer: Schema.Attribute.Integer;
     NKRStellungnahmeLink: Schema.Attribute.String;
+    Paragraphen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::paragraph.paragraph'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     Ressort: Schema.Attribute.Enumeration<
@@ -624,6 +675,10 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       Schema.Attribute.Private;
     URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
     VeroeffentlichungsDatum: Schema.Attribute.Date;
+    Visualisierungen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visualisierung.visualisierung'
+    >;
   };
 }
 
@@ -639,6 +694,10 @@ export interface ApiVisualisierungVisualisierung
     draftAndPublish: true;
   };
   attributes: {
+    Beispielvorhaben: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::regelungsvorhaben.regelungsvorhaben'
+    >;
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Bild: Schema.Attribute.Media<'files' | 'images'> &
       Schema.Attribute.Required;
@@ -1174,6 +1233,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::absatz.absatz': ApiAbsatzAbsatz;
       'api::digitalcheck.digitalcheck': ApiDigitalcheckDigitalcheck;
       'api::global.global': ApiGlobalGlobal;
       'api::paragraph.paragraph': ApiParagraphParagraph;

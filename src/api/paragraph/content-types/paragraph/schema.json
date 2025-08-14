@@ -35,8 +35,20 @@
     },
     "Absaetze": {
       "type": "component",
-      "repeatable": true,
-      "component": "shared.absatz"
+      "component": "shared.absatz",
+      "repeatable": true
+    },
+    "Beispielvorhaben": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regelungsvorhaben.regelungsvorhaben",
+      "inversedBy": "Paragraphen"
+    },
+    "Absatz": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::absatz.absatz",
+      "mappedBy": "Paragraph"
     }
   }
 }
