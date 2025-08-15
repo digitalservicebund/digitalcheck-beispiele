@@ -652,6 +652,7 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
         'AA',
         'BMAS',
         'BMBF',
+        'BMBFSFJ',
         'BMV',
         'BMEL',
         'BMF',
