@@ -59,7 +59,32 @@ async function addAbsaetze(client) {
     }
   `;
 
+  // Check that absatz does not exist
+  const absatzExists = gql`
+    query absatz($filters: AbsatzFiltersInput!) {
+      absaetze(filters: $filters) {
+        documentId
+      }
+    }
+  `;
+
   for (const absatz of absaetze) {
+    const result = await client.request(absatzExists, {
+      filters: {
+        Paragraph: {
+          documentId: {
+            eq: "fwgcenmn8dt9d7uyt7nf30d1",
+          },
+        },
+        Nummer: {
+          eq: 1,
+        },
+      },
+    });
+    if (result.absaetze.length > 0) {
+      console.log(`Absatz already exists`);
+      continue;
+    }
     await client.request(addAbsatz, { data: absatz });
   }
 }
