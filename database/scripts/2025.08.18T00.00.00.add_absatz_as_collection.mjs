@@ -59,7 +59,6 @@ async function addAbsaetze(client) {
     }
   `;
 
-  // Check that absatz does not exist
   const absatzExists = gql`
     query absatz($filters: AbsatzFiltersInput!) {
       absaetze(filters: $filters) {
@@ -89,7 +88,7 @@ async function addAbsaetze(client) {
   }
 }
 
-async function addBeispielvorhabenVisualisierungReference(client) {
+async function addBeispielvorhabenVisualisierungRelation(client) {
   const getVisualisierungenAndRegelungsvorhaben = gql`
     query Digitalchecks {
       digitalchecks {
@@ -103,15 +102,9 @@ async function addBeispielvorhabenVisualisierungReference(client) {
     }
   `;
 
-  let visualisierungenAndRegelungsvorhaben;
-  try {
-    visualisierungenAndRegelungsvorhaben = await client.request(
-      getVisualisierungenAndRegelungsvorhaben
-    );
-  } catch (error) {
-    console.error("Error fetching paragraphs:", error);
-    throw error;
-  }
+  const visualisierungenAndRegelungsvorhaben = await client.request(
+    getVisualisierungenAndRegelungsvorhaben
+  );
 
   const updateRegelungsvorhaben = gql`
     mutation Mutation($documentId: ID!, $data: RegelungsvorhabenInput!) {
@@ -124,14 +117,21 @@ async function addBeispielvorhabenVisualisierungReference(client) {
   `;
 
   for (const digitalcheck of visualisierungenAndRegelungsvorhaben.digitalchecks) {
-    await client.request(updateRegelungsvorhaben, {
-      documentId: digitalcheck.Regelungsvorhaben.documentId,
-      data: {
-        Visualisierungen: digitalcheck.Visualisierungen.map(
-          ({ documentId }) => documentId
-        ),
-      },
-    });
+    if (
+      digitalcheck.Visualisierungen.length > 0 &&
+      digitalcheck.Regelungsvorhaben
+    ) {
+      await client.request(updateRegelungsvorhaben, {
+        documentId: digitalcheck.Regelungsvorhaben.documentId,
+        data: {
+          Visualisierungen: digitalcheck.Visualisierungen.map(
+            ({ documentId }) => documentId
+          ),
+        },
+      });
+    }
+  }
+}
   }
 }
 
@@ -192,8 +192,8 @@ async function main() {
   });
 
   await addAbsaetze(client);
-  await addBeispielvorhabenVisualisierungReference(client);
   await addBeispielvorhabenPrinzipReference(client);
+  await addBeispielvorhabenVisualisierungRelation(client);
 }
 
 main().catch(console.error);
