@@ -132,6 +132,47 @@ async function addBeispielvorhabenVisualisierungRelation(client) {
     }
   }
 }
+
+async function addBeispielvorhabenParagraphRelation(client) {
+  const getParagraphsAndRegelungsvorhaben = gql`
+    query Digitalchecks {
+      digitalchecks {
+        Paragraphen {
+          documentId
+          Nummer
+        }
+        Regelungsvorhaben {
+          documentId
+        }
+      }
+    }
+  `;
+
+  const paragraphsAndRegelungsvorhaben = await client.request(
+    getParagraphsAndRegelungsvorhaben
+  );
+
+  const updateRegelungsvorhaben = gql`
+    mutation Mutation($documentId: ID!, $data: RegelungsvorhabenInput!) {
+      updateRegelungsvorhaben(documentId: $documentId, data: $data) {
+        Paragraphen {
+          documentId
+        }
+      }
+    }
+  `;
+
+  for (const digitalcheck of paragraphsAndRegelungsvorhaben.digitalchecks) {
+    if (digitalcheck.Paragraphen.length > 0 && digitalcheck.Regelungsvorhaben) {
+      await client.request(updateRegelungsvorhaben, {
+        documentId: digitalcheck.Regelungsvorhaben.documentId,
+        data: {
+          Paragraphen: digitalcheck.Paragraphen.toSorted((a, b) =>
+            a.Nummer.localeCompare(b.Nummer)
+          ).map(({ documentId }) => documentId),
+        },
+      });
+    }
   }
 }
 
