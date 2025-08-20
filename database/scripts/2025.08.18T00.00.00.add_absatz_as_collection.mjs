@@ -77,7 +77,6 @@ async function addAbsaetzeComponent(client) {
       },
     });
     if (result.absaetze.length > 0) {
-      console.log(`Absatz already exists`);
       continue;
     }
     await client.request(addAbsatz, { data: absatz });
@@ -130,27 +129,41 @@ async function addBeispielvorhabenVisualisierungRelation(client) {
 }
 
 async function addBeispielvorhabenParagraphRelation(client) {
-  const getParagraphsAndRegelungsvorhaben = gql`
-    query Digitalchecks {
-      digitalchecks {
-        Paragraphen {
-          documentId
-          Nummer
-        }
-        Regelungsvorhaben {
+  const getRegelungsvorhaben = gql`
+    query Regelungsvorhaben {
+      regelungsvorhabens(status: DRAFT) {
+        documentId
+        Digitalchecks {
           documentId
         }
       }
     }
   `;
 
-  const paragraphsAndRegelungsvorhaben = await client.request(
-    getParagraphsAndRegelungsvorhaben
-  );
+  const regelungsvorhaben = await client.request(getRegelungsvorhaben);
+
+  // To also include Paragraphs that are not published yet
+  const getAllParagraphs = gql`
+    query Paragraphen {
+      paragraphs(status: DRAFT, pagination: { limit: 1000 }) {
+        documentId
+        Nummer
+        Digitalcheck {
+          documentId
+        }
+      }
+    }
+  `;
+
+  const allParagraphs = await client.request(getAllParagraphs);
 
   const updateRegelungsvorhaben = gql`
     mutation Mutation($documentId: ID!, $data: RegelungsvorhabenInput!) {
-      updateRegelungsvorhaben(documentId: $documentId, data: $data) {
+      updateRegelungsvorhaben(
+        documentId: $documentId
+        data: $data
+        status: DRAFT
+      ) {
         Paragraphen {
           documentId
         }
@@ -158,17 +171,20 @@ async function addBeispielvorhabenParagraphRelation(client) {
     }
   `;
 
-  for (const digitalcheck of paragraphsAndRegelungsvorhaben.digitalchecks) {
-    if (digitalcheck.Paragraphen.length > 0 && digitalcheck.Regelungsvorhaben) {
-      await client.request(updateRegelungsvorhaben, {
-        documentId: digitalcheck.Regelungsvorhaben.documentId,
-        data: {
-          Paragraphen: digitalcheck.Paragraphen.toSorted((a, b) =>
-            a.Nummer.localeCompare(b.Nummer)
-          ).map(({ documentId }) => documentId),
-        },
-      });
-    }
+  for (const vorhaben of regelungsvorhaben.regelungsvorhabens) {
+    const paragraphs = allParagraphs.paragraphs.filter(
+      (paragraph) =>
+        paragraph.Digitalcheck?.documentId === vorhaben.Digitalchecks[0].documentId
+    );
+    if (paragraphs.length === 0) continue;
+    await client.request(updateRegelungsvorhaben, {
+      documentId: vorhaben.documentId,
+      data: {
+        Paragraphen: paragraphs
+          .toSorted((a, b) => a.Nummer.localeCompare(b.Nummer))
+          .map(({ documentId }) => documentId),
+      },
+    });
   }
 }
 
@@ -251,9 +267,11 @@ async function addPrinzipRelations(client) {
         Beispielvorhaben: prinzip.GuteUmsetzungen.map(
           (digitalcheck) => digitalcheck.Regelungsvorhaben.documentId
         ),
-        ...(prinzip.Example ? {
-          Beispiel: getAbsatzDocumentId(prinzip.Example),
-        } : {}),
+        ...(prinzip.Example
+          ? {
+              Beispiel: getAbsatzDocumentId(prinzip.Example),
+            }
+          : {}),
         // As we need to update a nested field (PrinzipienAnwendung) that we don't have direct access to,
         // we need to provide the full list of this object as it overwrites the existing one.
         // This is achieved by spreading the existing object and adding the new values.
