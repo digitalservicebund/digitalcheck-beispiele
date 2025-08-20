@@ -273,10 +273,11 @@ async function addPrinzipRelations(client) {
 }
 
 /**
- * STRAPI_TOKEN=your_api_token npm run add-absatz-as-collection
+ * STRAPI_TOKEN=your_api_token npm run add-absatz-as-collection [url]
  */
 async function main() {
-  const client = new GraphQLClient("http://localhost:1337/graphql", {
+  const url = process.argv[2] || "http://localhost:1337/graphql";
+  const client = new GraphQLClient(url, {
     headers: {
       Authorization: `Bearer ${process.env.STRAPI_TOKEN}`, // needs API token
     },
