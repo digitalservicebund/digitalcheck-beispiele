@@ -1,6 +1,6 @@
 import { GraphQLClient, gql } from "graphql-request";
 
-async function addAbsaetze(client) {
+async function addAbsaetzeComponent(client) {
   // Get all absatz component entries
   const getParagraphsWithAbsaetze = gql`
     query GetParagraphsWithAbsaetze {
@@ -19,13 +19,9 @@ async function addAbsaetze(client) {
     }
   `;
 
-  let paragraphsWithAbsaetze;
-  try {
-    paragraphsWithAbsaetze = await client.request(getParagraphsWithAbsaetze);
-  } catch (error) {
-    console.error("Error fetching paragraphs:", error);
-    throw error;
-  }
+  const paragraphsWithAbsaetze = await client.request(
+    getParagraphsWithAbsaetze
+  );
 
   // Add number to absaetze
   const absaetze = paragraphsWithAbsaetze.paragraphs.flatMap((paragraph) =>
@@ -232,8 +228,8 @@ async function main() {
     },
   });
 
-  await addAbsaetze(client);
   await addBeispielvorhabenPrinzipReference(client);
+  await addAbsaetzeComponent(client);
   await addBeispielvorhabenVisualisierungRelation(client);
 }
 
