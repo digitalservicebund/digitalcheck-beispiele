@@ -172,9 +172,9 @@ async function addBeispielvorhabenParagraphRelation(client) {
   }
 }
 
-async function addBeispielvorhabenPrinzipReference(client) {
-  const getPrinzipienAndRegelungsvorhaben = gql`
-    query QueryPrinzipien {
+async function addPrinzipRelations(client) {
+  const getPrinzipien = gql`
+    query Prinzipien {
       prinzips {
         GuteUmsetzungen {
           Regelungsvorhaben {
@@ -182,37 +182,91 @@ async function addBeispielvorhabenPrinzipReference(client) {
           }
         }
         documentId
-      }
-    }
-  `;
-
-  let prinzipienAndRegelungsvorhaben;
-  try {
-    prinzipienAndRegelungsvorhaben = await client.request(
-      getPrinzipienAndRegelungsvorhaben
-    );
-  } catch (error) {
-    console.error("Error fetching paragraphs:", error);
-    throw error;
-  }
-
-  const updatePrinzipien = gql`
-    mutation Mutation($documentId: ID!, $data: PrinzipInput!) {
-      updatePrinzip(documentId: $documentId, data: $data) {
-        Beispielvorhaben {
-          documentId
+        Example {
+          Paragraph {
+            documentId
+          }
+          AbsatzNumber
+        }
+        PrinzipienAnwendung {
+          Title
+          Example {
+            Paragraph {
+              documentId
+            }
+            AbsatzNumber
+          }
+          Text
+          Questions
+          WordingExample
         }
       }
     }
   `;
 
-  for (const prinzip of prinzipienAndRegelungsvorhaben.prinzips) {
+  const prinzipien = await client.request(getPrinzipien);
+
+  const getParagraphs = gql`
+    query Paragraphs {
+      paragraphs(pagination: { limit: 1000 }, status: DRAFT) {
+        Absatz {
+          Nummer
+          documentId
+        }
+        documentId
+      }
+    }
+  `;
+
+  const paragraphs = await client.request(getParagraphs);
+
+  const updatePrinzipien = gql`
+    mutation updatePrinzipien($documentId: ID!, $data: PrinzipInput!) {
+      updatePrinzip(documentId: $documentId, data: $data) {
+        Beispielvorhaben {
+          documentId
+        }
+        Beispiel {
+          documentId
+        }
+        PrinzipienAnwendung {
+          Beispiel {
+            documentId
+          }
+        }
+      }
+    }
+  `;
+
+  const getAbsatzDocumentId = ({ Paragraph, AbsatzNumber }) => {
+    return paragraphs.paragraphs
+      .find((paragraph) => paragraph.documentId === Paragraph.documentId)
+      .Absatz.find((absatz) => absatz.Nummer === AbsatzNumber).documentId;
+  };
+
+  for (const prinzip of prinzipien.prinzips) {
     await client.request(updatePrinzipien, {
-      documentId: prinzip.document_id,
+      documentId: prinzip.documentId,
       data: {
         Beispielvorhaben: prinzip.GuteUmsetzungen.map(
-          (digitalcheck) => digitalcheck.Regelungsvorhaben.document_id
+          (digitalcheck) => digitalcheck.Regelungsvorhaben.documentId
         ),
+        Beispiel: getAbsatzDocumentId(prinzip.Example),
+        // As we need to update a nested field (PrinzipienAnwendung) that we don't have direct access to,
+        // we need to provide the full list of this object as it overwrites the existing one.
+        // This is achieved by spreading the existing object and adding the new values.
+        PrinzipienAnwendung: prinzip.PrinzipienAnwendung.map((anwendung) => ({
+          ...anwendung,
+          ...(anwendung.Example
+            ? {
+                Example: {
+                  ...anwendung.Example,
+                  Paragraph: anwendung.Example.Paragraph.documentId,
+                },
+                Beispiel: getAbsatzDocumentId(anwendung.Example),
+              }
+            : {}),
+        })),
       },
     });
   }
@@ -228,9 +282,10 @@ async function main() {
     },
   });
 
-  await addBeispielvorhabenPrinzipReference(client);
   await addAbsaetzeComponent(client);
   await addBeispielvorhabenVisualisierungRelation(client);
+  await addBeispielvorhabenParagraphRelation(client);
+  await addPrinzipRelations(client);
 }
 
 main().catch(console.error);
