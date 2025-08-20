@@ -175,7 +175,7 @@ async function addBeispielvorhabenParagraphRelation(client) {
 async function addPrinzipRelations(client) {
   const getPrinzipien = gql`
     query Prinzipien {
-      prinzips {
+      prinzips(status: DRAFT) {
         GuteUmsetzungen {
           Regelungsvorhaben {
             documentId
@@ -222,7 +222,7 @@ async function addPrinzipRelations(client) {
 
   const updatePrinzipien = gql`
     mutation updatePrinzipien($documentId: ID!, $data: PrinzipInput!) {
-      updatePrinzip(documentId: $documentId, data: $data) {
+      updatePrinzip(documentId: $documentId, data: $data, status: DRAFT) {
         Beispielvorhaben {
           documentId
         }
@@ -251,7 +251,9 @@ async function addPrinzipRelations(client) {
         Beispielvorhaben: prinzip.GuteUmsetzungen.map(
           (digitalcheck) => digitalcheck.Regelungsvorhaben.documentId
         ),
-        Beispiel: getAbsatzDocumentId(prinzip.Example),
+        ...(prinzip.Example ? {
+          Beispiel: getAbsatzDocumentId(prinzip.Example),
+        } : {}),
         // As we need to update a nested field (PrinzipienAnwendung) that we don't have direct access to,
         // we need to provide the full list of this object as it overwrites the existing one.
         // This is achieved by spreading the existing object and adding the new values.
