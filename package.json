@@ -9,8 +9,7 @@
     "develop": "strapi develop",
     "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
-    "strapi": "strapi",
-    "add-absatz-as-collection": "node ./database/scripts/2025.08.18T00.00.00.add_absatz_as_collection.mjs"
+    "strapi": "strapi"
   },
   "dependencies": {
     "@apollo/server-plugin-response-cache": "^4.1.3",

@@ -293,7 +293,7 @@ async function addPrinzipRelations(client) {
 }
 
 /**
- * STRAPI_TOKEN=your_api_token npm run add-absatz-as-collection [url]
+ * STRAPI_TOKEN=your_api_token node ./database/scripts/2025_08_18_add_absatz_as_collection.mjs [url]
  */
 async function main() {
   const url = process.argv[2] || "http://localhost:1337/graphql";
