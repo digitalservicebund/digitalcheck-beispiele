@@ -448,10 +448,6 @@ export interface ApiDigitalcheckDigitalcheck
     > &
       Schema.Attribute.Private;
     NKRStellungnahmeDCText: Schema.Attribute.Blocks;
-    Paragraphen: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::paragraph.paragraph'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     Regelungsvorhaben: Schema.Attribute.Relation<
       'manyToOne',
@@ -463,10 +459,6 @@ export interface ApiDigitalcheckDigitalcheck
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Visualisierungen: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::visualisierung.visualisierung'
-    >;
     VorpruefungAutomatisierung: Schema.Attribute.Boolean;
     VorpruefungDatenaustausch: Schema.Attribute.Boolean;
     VorpruefungITSystem: Schema.Attribute.Boolean;
@@ -519,7 +511,6 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Absaetze: Schema.Attribute.Component<'shared.absatz', true>;
     Absatz: Schema.Attribute.Relation<'oneToMany', 'api::absatz.absatz'>;
     Artikel: Schema.Attribute.String;
     Beispielvorhaben: Schema.Attribute.Relation<
@@ -529,10 +520,6 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Digitalcheck: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::digitalcheck.digitalcheck'
-    >;
     Gesetz: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -570,11 +557,6 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Example: Schema.Attribute.Component<'shared.example-absatz', false>;
-    GuteUmsetzungen: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::digitalcheck.digitalcheck'
-    >;
     Kurzbezeichnung: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -710,10 +692,6 @@ export interface ApiVisualisierungVisualisierung
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Digitalcheck: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::digitalcheck.digitalcheck'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

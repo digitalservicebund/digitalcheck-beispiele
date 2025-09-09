@@ -27,17 +27,6 @@
     "Artikel": {
       "type": "string"
     },
-    "Digitalcheck": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::digitalcheck.digitalcheck",
-      "inversedBy": "Paragraphen"
-    },
-    "Absaetze": {
-      "type": "component",
-      "component": "shared.absatz",
-      "repeatable": true
-    },
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "manyToOne",

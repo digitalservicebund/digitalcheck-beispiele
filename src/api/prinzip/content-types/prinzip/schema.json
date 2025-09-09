@@ -30,11 +30,6 @@
       "targetField": "Name",
       "required": true
     },
-    "GuteUmsetzungen": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::digitalcheck.digitalcheck"
-    },
     "Kurzbezeichnung": {
       "type": "string",
       "required": true,
@@ -49,11 +44,6 @@
       "type": "component",
       "component": "shared.prinzipien-anwendung",
       "repeatable": true
-    },
-    "Example": {
-      "type": "component",
-      "component": "shared.example-absatz",
-      "repeatable": false
     },
     "Beispielvorhaben": {
       "type": "relation",

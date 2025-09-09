@@ -34,12 +34,6 @@
       "type": "blocks",
       "required": true
     },
-    "Digitalcheck": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::digitalcheck.digitalcheck",
-      "inversedBy": "Visualisierungen"
-    },
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "manyToOne",

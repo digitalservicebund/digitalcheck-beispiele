@@ -1,36 +1,5 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedAbsatz extends Struct.ComponentSchema {
-  collectionName: 'components_shared_absatzs';
-  info: {
-    description: '';
-    displayName: 'Absatz';
-    icon: 'layer';
-  };
-  attributes: {
-    PrinzipErfuellungen: Schema.Attribute.Component<
-      'shared.prinziperfuellung',
-      true
-    >;
-    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
-  };
-}
-
-export interface SharedExampleAbsatz extends Struct.ComponentSchema {
-  collectionName: 'components_shared_example_absatzs';
-  info: {
-    displayName: 'ExampleAbsatz';
-    icon: 'handHeart';
-  };
-  attributes: {
-    AbsatzNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Paragraph: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::paragraph.paragraph'
-    >;
-  };
-}
-
 export interface SharedPrinzipKurzbezeichnung extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinzip_kurzbezeichnungs';
   info: {
@@ -72,7 +41,6 @@ export interface SharedPrinzipienAnwendung extends Struct.ComponentSchema {
   };
   attributes: {
     Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
-    Example: Schema.Attribute.Component<'shared.example-absatz', false>;
     Questions: Schema.Attribute.Blocks;
     Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Title: Schema.Attribute.String &
@@ -112,8 +80,6 @@ export interface SharedTag extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.absatz': SharedAbsatz;
-      'shared.example-absatz': SharedExampleAbsatz;
       'shared.prinzip-kurzbezeichnung': SharedPrinzipKurzbezeichnung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
       'shared.prinzipien-anwendung': SharedPrinzipienAnwendung;
