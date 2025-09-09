@@ -21,11 +21,6 @@
     "WordingExample": {
       "type": "blocks"
     },
-    "Example": {
-      "type": "component",
-      "component": "shared.example-absatz",
-      "repeatable": false
-    },
     "Beispiel": {
       "type": "relation",
       "relation": "oneToOne",
