@@ -32,48 +32,29 @@
     },
     "EinschaetzungKommunikation": {
       "type": "enumeration",
-      "enum": [
-        "Ja",
-        "Nein",
-        "Teilweise",
-        "Nicht Relevant"
-      ]
+      "enum": ["Ja", "Nein", "Teilweise", "Nicht Relevant"]
     },
     "EinschaetzungWiederverwendung": {
       "type": "enumeration",
-      "enum": [
-        "Ja",
-        "Nein",
-        "Teilweise",
-        "Nicht Relevant"
-      ]
+      "enum": ["Ja", "Nein", "Teilweise", "Nicht Relevant"]
     },
     "EinschaetzungDatenschutz": {
       "type": "enumeration",
-      "enum": [
-        "Ja",
-        "Nein",
-        "Teilweise",
-        "Nicht Relevant"
-      ]
+      "enum": ["Ja", "Nein", "Teilweise", "Nicht Relevant"]
     },
     "EinschaetzungKlareRegelungen": {
       "type": "enumeration",
-      "enum": [
-        "Ja",
-        "Nein",
-        "Teilweise",
-        "Nicht Relevant"
-      ]
+      "enum": ["Ja", "Nein", "Teilweise", "Nicht Relevant"]
     },
     "EinschaetzungAutomatisierung": {
       "type": "enumeration",
-      "enum": [
-        "Ja",
-        "Nein",
-        "Teilweise",
-        "Nicht Relevant"
-      ]
+      "enum": ["Ja", "Nein", "Teilweise", "Nicht Relevant"]
+    },
+    "Beispielvorhaben": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::beispielvorhaben.beispielvorhaben",
+      "inversedBy": "Digitalchecks"
     },
     "Regelungsvorhaben": {
       "type": "relation",

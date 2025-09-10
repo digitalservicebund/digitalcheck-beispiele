@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "beispielvorhabens",
+  "info": {
+    "singularName": "beispielvorhaben",
+    "pluralName": "beispielvorhabens",
+    "displayName": "Beispielvorhaben",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titel": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Ressort": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "AA",
+        "BMAS",
+        "BMBF (heute BMFTR)",
+        "BMFTR",
+        "BMFSFJ (heute BMBFSFJ)",
+        "BMBFSFJ",
+        "BMV",
+        "BMEL (heute BMELH)",
+        "BMELH",
+        "BMF",
+        "BMG",
+        "BMI",
+        "BMJ (heute BMJV)",
+        "BMJV",
+        "BMUV (heute BMUKN)",
+        "BMUKN",
+        "BMVg",
+        "BMWK (heute BMWE)",
+        "BMWE",
+        "BMWSB",
+        "BMZ"
+      ]
+    },
+    "NKRStellungnahmeLink": {
+      "type": "string"
+    },
+    "DIPVorgang": {
+      "type": "integer",
+      "required": false
+    },
+    "NKRNummer": {
+      "type": "integer",
+      "required": false
+    },
+    "URLBezeichnung": {
+      "type": "uid",
+      "targetField": "Titel",
+      "required": true
+    },
+    "Rechtsgebiet": {
+      "type": "enumeration",
+      "enum": ["TBD"]
+    },
+    "VeroeffentlichungsDatum": {
+      "type": "date"
+    },
+    "Digitalchecks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::digitalcheck.digitalcheck",
+      "mappedBy": "Beispielvorhaben"
+    },
+    "LinkRegelungstext": {
+      "type": "string",
+      "required": true
+    },
+    "GesetzStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Regelungsentwurf",
+        "Text im Parlament",
+        "Verkündetes Gesetz (aktuelle Fassung)"
+      ]
+    },
+    "Manteltext": {
+      "type": "blocks"
+    },
+    "Paragraphen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::paragraph.paragraph",
+      "mappedBy": "Beispielvorhaben"
+    },
+    "Visualisierungen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::visualisierung.visualisierung",
+      "mappedBy": "Beispielvorhaben"
+    }
+  }
+}

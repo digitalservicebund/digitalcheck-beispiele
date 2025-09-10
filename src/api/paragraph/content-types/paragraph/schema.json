@@ -33,6 +33,12 @@
       "target": "api::regelungsvorhaben.regelungsvorhaben",
       "inversedBy": "Paragraphen"
     },
+    "BeispielvorhabenNew": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::beispielvorhaben.beispielvorhaben",
+      "inversedBy": "Paragraphen"
+    },
     "Absatz": {
       "type": "relation",
       "relation": "oneToMany",

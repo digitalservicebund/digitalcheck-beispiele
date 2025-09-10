@@ -410,6 +410,91 @@ export interface ApiAbsatzAbsatz extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBeispielvorhabenBeispielvorhaben
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'beispielvorhabens';
+  info: {
+    description: '';
+    displayName: 'Beispielvorhaben';
+    pluralName: 'beispielvorhabens';
+    singularName: 'beispielvorhaben';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Digitalchecks: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::digitalcheck.digitalcheck'
+    >;
+    DIPVorgang: Schema.Attribute.Integer;
+    GesetzStatus: Schema.Attribute.Enumeration<
+      [
+        'Regelungsentwurf',
+        'Text im Parlament',
+        'Verk\u00FCndetes Gesetz (aktuelle Fassung)',
+      ]
+    >;
+    LinkRegelungstext: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::beispielvorhaben.beispielvorhaben'
+    > &
+      Schema.Attribute.Private;
+    Manteltext: Schema.Attribute.Blocks;
+    NKRNummer: Schema.Attribute.Integer;
+    NKRStellungnahmeLink: Schema.Attribute.String;
+    Paragraphen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::paragraph.paragraph'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
+    Ressort: Schema.Attribute.Enumeration<
+      [
+        'AA',
+        'BMAS',
+        'BMBF (heute BMFTR)',
+        'BMFTR',
+        'BMFSFJ (heute BMBFSFJ)',
+        'BMBFSFJ',
+        'BMV',
+        'BMEL (heute BMELH)',
+        'BMELH',
+        'BMF',
+        'BMG',
+        'BMI',
+        'BMJ (heute BMJV)',
+        'BMJV',
+        'BMUV (heute BMUKN)',
+        'BMUKN',
+        'BMVg',
+        'BMWK (heute BMWE)',
+        'BMWE',
+        'BMWSB',
+        'BMZ',
+      ]
+    > &
+      Schema.Attribute.Required;
+    Titel: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
+    VeroeffentlichungsDatum: Schema.Attribute.Date;
+    Visualisierungen: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visualisierung.visualisierung'
+    >;
+  };
+}
+
 export interface ApiDigitalcheckDigitalcheck
   extends Struct.CollectionTypeSchema {
   collectionName: 'digitalchecks';
@@ -423,6 +508,10 @@ export interface ApiDigitalcheckDigitalcheck
     draftAndPublish: true;
   };
   attributes: {
+    Beispielvorhaben: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::beispielvorhaben.beispielvorhaben'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -517,6 +606,10 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::regelungsvorhaben.regelungsvorhaben'
     >;
+    BeispielvorhabenNew: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::beispielvorhaben.beispielvorhaben'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -552,6 +645,10 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     Beispielvorhaben: Schema.Attribute.Relation<
       'oneToMany',
       'api::regelungsvorhaben.regelungsvorhaben'
+    >;
+    BeispielvorhabenNew: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::beispielvorhaben.beispielvorhaben'
     >;
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
@@ -685,6 +782,10 @@ export interface ApiVisualisierungVisualisierung
     Beispielvorhaben: Schema.Attribute.Relation<
       'manyToOne',
       'api::regelungsvorhaben.regelungsvorhaben'
+    >;
+    BeispielvorhabenNew: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::beispielvorhaben.beispielvorhaben'
     >;
     Beschreibung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Bild: Schema.Attribute.Media<'files' | 'images'> &
@@ -1218,6 +1319,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::absatz.absatz': ApiAbsatzAbsatz;
+      'api::beispielvorhaben.beispielvorhaben': ApiBeispielvorhabenBeispielvorhaben;
       'api::digitalcheck.digitalcheck': ApiDigitalcheckDigitalcheck;
       'api::global.global': ApiGlobalGlobal;
       'api::paragraph.paragraph': ApiParagraphParagraph;

@@ -15,10 +15,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "files",
-        "images"
-      ]
+      "allowedTypes": ["files", "images"]
     },
     "Titel": {
       "type": "string",
@@ -38,6 +35,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::regelungsvorhaben.regelungsvorhaben",
+      "inversedBy": "Visualisierungen"
+    },
+    "BeispielvorhabenNew": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::beispielvorhaben.beispielvorhaben",
       "inversedBy": "Visualisierungen"
     }
   }
