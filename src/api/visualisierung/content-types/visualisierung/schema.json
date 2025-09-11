@@ -34,12 +34,6 @@
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::regelungsvorhaben.regelungsvorhaben",
-      "inversedBy": "Visualisierungen"
-    },
-    "BeispielvorhabenNew": {
-      "type": "relation",
-      "relation": "manyToOne",
       "target": "api::beispielvorhaben.beispielvorhaben",
       "inversedBy": "Visualisierungen"
     }

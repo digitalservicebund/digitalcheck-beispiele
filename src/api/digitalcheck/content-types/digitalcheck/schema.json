@@ -56,12 +56,6 @@
       "target": "api::beispielvorhaben.beispielvorhaben",
       "inversedBy": "Digitalchecks"
     },
-    "Regelungsvorhaben": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::regelungsvorhaben.regelungsvorhaben",
-      "inversedBy": "Digitalchecks"
-    },
     "Titel": {
       "type": "string",
       "required": true,

@@ -48,11 +48,6 @@
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::regelungsvorhaben.regelungsvorhaben"
-    },
-    "BeispielvorhabenNew": {
-      "type": "relation",
-      "relation": "oneToMany",
       "target": "api::beispielvorhaben.beispielvorhaben"
     },
     "Beispiel": {

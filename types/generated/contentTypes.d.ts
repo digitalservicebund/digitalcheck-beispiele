@@ -538,10 +538,6 @@ export interface ApiDigitalcheckDigitalcheck
       Schema.Attribute.Private;
     NKRStellungnahmeDCText: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
-    Regelungsvorhaben: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::regelungsvorhaben.regelungsvorhaben'
-    >;
     Titel: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -604,10 +600,6 @@ export interface ApiParagraphParagraph extends Struct.CollectionTypeSchema {
     Artikel: Schema.Attribute.String;
     Beispielvorhaben: Schema.Attribute.Relation<
       'manyToOne',
-      'api::regelungsvorhaben.regelungsvorhaben'
-    >;
-    BeispielvorhabenNew: Schema.Attribute.Relation<
-      'manyToOne',
       'api::beispielvorhaben.beispielvorhaben'
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -643,10 +635,6 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
   attributes: {
     Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
     Beispielvorhaben: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::regelungsvorhaben.regelungsvorhaben'
-    >;
-    BeispielvorhabenNew: Schema.Attribute.Relation<
       'oneToMany',
       'api::beispielvorhaben.beispielvorhaben'
     >;
@@ -698,10 +686,6 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Digitalchecks: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::digitalcheck.digitalcheck'
-    >;
     DIPVorgang: Schema.Attribute.Integer;
     GesetzStatus: Schema.Attribute.Enumeration<
       [
@@ -720,10 +704,6 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
     Manteltext: Schema.Attribute.Blocks;
     NKRNummer: Schema.Attribute.Integer;
     NKRStellungnahmeLink: Schema.Attribute.String;
-    Paragraphen: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::paragraph.paragraph'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
     Ressort: Schema.Attribute.Enumeration<
@@ -760,10 +740,6 @@ export interface ApiRegelungsvorhabenRegelungsvorhaben
       Schema.Attribute.Private;
     URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
     VeroeffentlichungsDatum: Schema.Attribute.Date;
-    Visualisierungen: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::visualisierung.visualisierung'
-    >;
   };
 }
 
@@ -780,10 +756,6 @@ export interface ApiVisualisierungVisualisierung
   };
   attributes: {
     Beispielvorhaben: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::regelungsvorhaben.regelungsvorhaben'
-    >;
-    BeispielvorhabenNew: Schema.Attribute.Relation<
       'manyToOne',
       'api::beispielvorhaben.beispielvorhaben'
     >;

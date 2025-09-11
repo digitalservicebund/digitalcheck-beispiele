@@ -69,12 +69,6 @@
     "VeroeffentlichungsDatum": {
       "type": "date"
     },
-    "Digitalchecks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::digitalcheck.digitalcheck",
-      "mappedBy": "Regelungsvorhaben"
-    },
     "LinkRegelungstext": {
       "type": "string",
       "required": true
@@ -89,18 +83,6 @@
     },
     "Manteltext": {
       "type": "blocks"
-    },
-    "Paragraphen": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::paragraph.paragraph",
-      "mappedBy": "Beispielvorhaben"
-    },
-    "Visualisierungen": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::visualisierung.visualisierung",
-      "mappedBy": "Beispielvorhaben"
     }
   }
 }
