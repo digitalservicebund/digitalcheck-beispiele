@@ -1,0 +1,111 @@
+{
+  "data": {
+    "prinzips": [
+      {
+        "documentId": "habu0yjh39lc5wug5mqsqzaj",
+        "Beispielvorhaben": [
+          {
+            "documentId": "mnocfcfzaecj7g12pwtym4oc"
+          }
+        ]
+      },
+      {
+        "documentId": "bnx9lmblnceu1m3uy3rziy0i",
+        "Beispielvorhaben": [
+          {
+            "documentId": "l868t6lwwxicqabl1yuoi6d8"
+          },
+          {
+            "documentId": "ezoqjnj99abts9euhrol1a25"
+          },
+          {
+            "documentId": "avmu6nz28b3wekpy2ozbdjcs"
+          },
+          {
+            "documentId": "kgmb02ggy0b2bhjg2imkvc4s"
+          },
+          {
+            "documentId": "ro732w1z1mr295wj8b100232"
+          },
+          {
+            "documentId": "u8dnp1jie8bvpnbjl5pw3n66"
+          },
+          {
+            "documentId": "mnocfcfzaecj7g12pwtym4oc"
+          }
+        ]
+      },
+      {
+        "documentId": "r57rc9d82ulv2bsc3gdbnj73",
+        "Beispielvorhaben": [
+          {
+            "documentId": "avmu6nz28b3wekpy2ozbdjcs"
+          },
+          {
+            "documentId": "ezoqjnj99abts9euhrol1a25"
+          },
+          {
+            "documentId": "l868t6lwwxicqabl1yuoi6d8"
+          },
+          {
+            "documentId": "kgmb02ggy0b2bhjg2imkvc4s"
+          },
+          {
+            "documentId": "ro732w1z1mr295wj8b100232"
+          },
+          {
+            "documentId": "u8dnp1jie8bvpnbjl5pw3n66"
+          },
+          {
+            "documentId": "mnocfcfzaecj7g12pwtym4oc"
+          }
+        ]
+      },
+      {
+        "documentId": "got436pv8femeqmv6ee8wlm1",
+        "Beispielvorhaben": [
+          {
+            "documentId": "l868t6lwwxicqabl1yuoi6d8"
+          },
+          {
+            "documentId": "u8dnp1jie8bvpnbjl5pw3n66"
+          },
+          {
+            "documentId": "mnocfcfzaecj7g12pwtym4oc"
+          }
+        ]
+      },
+      {
+        "documentId": "l2t2h5cdv15sb27zh05o2b3p",
+        "Beispielvorhaben": [
+          {
+            "documentId": "l868t6lwwxicqabl1yuoi6d8"
+          },
+          {
+            "documentId": "ro732w1z1mr295wj8b100232"
+          }
+        ]
+      },
+      {
+        "documentId": "s18bibg9sdf0jt8up7h8btup",
+        "Beispielvorhaben": [
+          {
+            "documentId": "ezoqjnj99abts9euhrol1a25"
+          },
+          {
+            "documentId": "avmu6nz28b3wekpy2ozbdjcs"
+          },
+          {
+            "documentId": "ro732w1z1mr295wj8b100232"
+          },
+          {
+            "documentId": "u8dnp1jie8bvpnbjl5pw3n66"
+          },
+          {
+            "documentId": "mnocfcfzaecj7g12pwtym4oc"
+          }
+        ]
+      }
+    ]
+  }
+}
