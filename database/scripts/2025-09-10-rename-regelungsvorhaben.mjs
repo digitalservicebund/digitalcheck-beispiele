@@ -9,29 +9,7 @@ console.log(regelungsvorhabens.length, prinzipien.length);
 
 const beispielvorhabenMap = new Map();
 
-const copyRegelungsvorhabenToBeispielvorhaben = async (client) => {
-  // delete all beispielvorhaben
-  const getBeispielvorhaben = gql`
-    query Beispielvorhaben {
-      beispielvorhabens {
-        documentId
-      }
-    }
-  `;
-  const deleteBeispielvorhaben = gql`
-    mutation DeleteBeispielvorhaben($documentId: ID!) {
-      deleteBeispielvorhaben(documentId: $documentId) {
-        documentId
-      }
-    }
-  `;
-  const { beispielvorhabens } = await client.request(getBeispielvorhaben);
-  for (const documentId of beispielvorhabens.map(
-    ({ documentId }) => documentId
-  )) {
-    await client.request(deleteBeispielvorhaben, { documentId });
-  }
-
+const copyRegelungsvorhabenToBeispielvorhabenAndUpdatePrinzipien = async (client) => {
   const createBeispielvorhaben = gql`
     mutation CreateBeispielvorhaben($data: BeispielvorhabenInput!) {
       createBeispielvorhaben(data: $data) {
@@ -63,7 +41,6 @@ const copyRegelungsvorhabenToBeispielvorhaben = async (client) => {
 
   for (const regelungsvorhaben of regelungsvorhabens) {
     const { documentId, ...rest } = regelungsvorhaben;
-    console.log(publishedAt);
 
     const res = await client.request(createBeispielvorhaben, {
       data: {
@@ -127,7 +104,7 @@ async function main() {
     },
   });
 
-  await copyRegelungsvorhabenToBeispielvorhaben(client);
+  await copyRegelungsvorhabenToBeispielvorhabenAndUpdatePrinzipien(client);
 }
 
 main().catch(console.error);
