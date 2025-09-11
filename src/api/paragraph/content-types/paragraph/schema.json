@@ -30,7 +30,7 @@
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::regelungsvorhaben.regelungsvorhaben",
+      "target": "api::beispielvorhaben.beispielvorhaben",
       "inversedBy": "Paragraphen"
     },
     "Absatz": {
