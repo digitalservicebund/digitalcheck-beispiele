@@ -57,7 +57,7 @@
     },
     "PrinzipAspekt": {
       "type": "component",
-      "component": "shared.prinzipien-anwendung",
+      "component": "shared.prinzip-aspekt",
       "repeatable": true
     }
   }
