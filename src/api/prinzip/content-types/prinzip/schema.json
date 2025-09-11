@@ -54,6 +54,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::absatz.absatz"
+    },
+    "PrinzipAspekt": {
+      "type": "component",
+      "component": "shared.prinzipien-anwendung",
+      "repeatable": true
     }
   }
 }

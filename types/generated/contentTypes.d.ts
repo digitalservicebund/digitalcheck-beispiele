@@ -658,6 +658,10 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<1>;
+    PrinzipAspekt: Schema.Attribute.Component<
+      'shared.prinzipien-anwendung',
+      true
+    >;
     PrinzipienAnwendung: Schema.Attribute.Component<
       'shared.prinzipien-anwendung',
       true
