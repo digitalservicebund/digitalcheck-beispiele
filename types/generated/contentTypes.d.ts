@@ -670,79 +670,6 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiRegelungsvorhabenRegelungsvorhaben
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'regelungsvorhabens';
-  info: {
-    description: '';
-    displayName: 'Regelungsvorhaben';
-    pluralName: 'regelungsvorhabens';
-    singularName: 'regelungsvorhaben';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    DIPVorgang: Schema.Attribute.Integer;
-    GesetzStatus: Schema.Attribute.Enumeration<
-      [
-        'Regelungsentwurf',
-        'Text im Parlament',
-        'Verk\u00FCndetes Gesetz (aktuelle Fassung)',
-      ]
-    >;
-    LinkRegelungstext: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::regelungsvorhaben.regelungsvorhaben'
-    > &
-      Schema.Attribute.Private;
-    Manteltext: Schema.Attribute.Blocks;
-    NKRNummer: Schema.Attribute.Integer;
-    NKRStellungnahmeLink: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    Rechtsgebiet: Schema.Attribute.Enumeration<['TBD']>;
-    Ressort: Schema.Attribute.Enumeration<
-      [
-        'AA',
-        'BMAS',
-        'BMBF (heute BMFTR)',
-        'BMFTR',
-        'BMFSFJ (heute BMBFSFJ)',
-        'BMBFSFJ',
-        'BMV',
-        'BMEL (heute BMELH)',
-        'BMELH',
-        'BMF',
-        'BMG',
-        'BMI',
-        'BMJ (heute BMJV)',
-        'BMJV',
-        'BMUV (heute BMUKN)',
-        'BMUKN',
-        'BMVg',
-        'BMWK (heute BMWE)',
-        'BMWE',
-        'BMWSB',
-        'BMZ',
-      ]
-    > &
-      Schema.Attribute.Required;
-    Titel: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    URLBezeichnung: Schema.Attribute.UID<'Titel'> & Schema.Attribute.Required;
-    VeroeffentlichungsDatum: Schema.Attribute.Date;
-  };
-}
-
 export interface ApiVisualisierungVisualisierung
   extends Struct.CollectionTypeSchema {
   collectionName: 'visualisierungen';
@@ -1296,7 +1223,6 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::paragraph.paragraph': ApiParagraphParagraph;
       'api::prinzip.prinzip': ApiPrinzipPrinzip;
-      'api::regelungsvorhaben.regelungsvorhaben': ApiRegelungsvorhabenRegelungsvorhaben;
       'api::visualisierung.visualisierung': ApiVisualisierungVisualisierung;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
