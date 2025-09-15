@@ -7,10 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "WarumGut": {
-      "type": "blocks",
-      "required": true
-    },
     "Prinzip": {
       "type": "relation",
       "relation": "oneToOne",

@@ -40,11 +40,6 @@
       "required": true,
       "default": 1
     },
-    "PrinzipienAnwendung": {
-      "type": "component",
-      "component": "shared.prinzipien-anwendung",
-      "repeatable": true
-    },
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "oneToMany",

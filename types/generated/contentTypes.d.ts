@@ -659,10 +659,6 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<1>;
-    PrinzipienAnwendung: Schema.Attribute.Component<
-      'shared.prinzipien-anwendung',
-      true
-    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

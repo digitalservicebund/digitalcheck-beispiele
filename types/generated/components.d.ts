@@ -44,24 +44,6 @@ export interface SharedPrinziperfuellung extends Struct.ComponentSchema {
   attributes: {
     Erklaerung: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Prinzip: Schema.Attribute.Relation<'oneToOne', 'api::prinzip.prinzip'>;
-    WarumGut: Schema.Attribute.Blocks & Schema.Attribute.Required;
-  };
-}
-
-export interface SharedPrinzipienAnwendung extends Struct.ComponentSchema {
-  collectionName: 'components_shared_prinzipien_anwendungs';
-  info: {
-    displayName: 'PrinzipienAnwendung';
-    icon: 'bulletList';
-  };
-  attributes: {
-    Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
-    Questions: Schema.Attribute.Blocks;
-    Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    Title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    WordingExample: Schema.Attribute.Blocks;
   };
 }
 
@@ -98,7 +80,6 @@ declare module '@strapi/strapi' {
       'shared.prinzip-aspekt': SharedPrinzipAspekt;
       'shared.prinzip-kurzbezeichnung': SharedPrinzipKurzbezeichnung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
-      'shared.prinzipien-anwendung': SharedPrinzipienAnwendung;
       'shared.seo': SharedSeo;
       'shared.tag': SharedTag;
     }
