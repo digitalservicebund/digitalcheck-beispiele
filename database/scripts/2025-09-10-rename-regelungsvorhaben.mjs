@@ -1,6 +1,6 @@
 import { GraphQLClient, gql } from "graphql-request";
-import Prinzipien from "../data/Prinzipien.json" assert { type: "json" };
-import Regelungsvorhabens from "../data/Regelungsvorhaben.json" assert { type: "json" };
+import Prinzipien from "../data/Prinzipien.json" with { type: "json" };
+import Regelungsvorhabens from "../data/Regelungsvorhaben.json" with { type: "json" };
 
 const regelungsvorhabens = Regelungsvorhabens.data.regelungsvorhabens;
 const prinzipien = Prinzipien.data.prinzips;
@@ -136,7 +136,7 @@ const copyPrinzipienAnwendungToPrinzipAspekt = async (client) => {
 const copyWarumGutToErklärung = async (client) => {
   const getAbsaetze = gql`
     query Absatz {
-      absaetze(status: DRAFT) {
+      absaetze(status: DRAFT, pagination: { limit: 1000 }) {
         documentId
         PrinzipErfuellungen {
           Prinzip {
