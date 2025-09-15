@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regelungsvorhabens",
+  "info": {
+    "singularName": "regelungsvorhaben",
+    "pluralName": "regelungsvorhabens",
+    "displayName": "Regelungsvorhaben",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titel": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Ressort": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "AA",
+        "BMAS",
+        "BMBF (heute BMFTR)",
+        "BMFTR",
+        "BMFSFJ (heute BMBFSFJ)",
+        "BMBFSFJ",
+        "BMV",
+        "BMEL (heute BMELH)",
+        "BMELH",
+        "BMF",
+        "BMG",
+        "BMI",
+        "BMJ (heute BMJV)",
+        "BMJV",
+        "BMUV (heute BMUKN)",
+        "BMUKN",
+        "BMVg",
+        "BMWK (heute BMWE)",
+        "BMWE",
+        "BMWSB",
+        "BMZ"
+      ]
+    },
+    "NKRStellungnahmeLink": {
+      "type": "string"
+    },
+    "DIPVorgang": {
+      "type": "integer",
+      "required": false
+    },
+    "NKRNummer": {
+      "type": "integer",
+      "required": false
+    },
+    "URLBezeichnung": {
+      "type": "uid",
+      "targetField": "Titel",
+      "required": true
+    },
+    "Rechtsgebiet": {
+      "type": "enumeration",
+      "enum": [
+        "TBD"
+      ]
+    },
+    "VeroeffentlichungsDatum": {
+      "type": "date"
+    },
+    "LinkRegelungstext": {
+      "type": "string",
+      "required": true
+    },
+    "GesetzStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Regelungsentwurf",
+        "Text im Parlament",
+        "Verkündetes Gesetz (aktuelle Fassung)"
+      ]
+    },
+    "Manteltext": {
+      "type": "blocks"
+    }
+  }
+}
