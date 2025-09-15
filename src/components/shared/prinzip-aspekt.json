@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_prinzip_aspekts",
+  "info": {
+    "displayName": "PrinzipAspekt"
+  },
+  "options": {},
+  "attributes": {
+    "Titel": {
+      "type": "string",
+      "required": true
+    },
+    "Text": {
+      "type": "blocks",
+      "required": true
+    },
+    "Leitfragen": {
+      "type": "blocks"
+    },
+    "Formulierungsbeispiel": {
+      "type": "blocks"
+    },
+    "Beispiel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::absatz.absatz"
+    }
+  },
+  "config": {}
+}

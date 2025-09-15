@@ -48,12 +48,17 @@
     "Beispielvorhaben": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::regelungsvorhaben.regelungsvorhaben"
+      "target": "api::beispielvorhaben.beispielvorhaben"
     },
     "Beispiel": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::absatz.absatz"
+    },
+    "Aspekte": {
+      "type": "component",
+      "component": "shared.prinzip-aspekt",
+      "repeatable": true
     }
   }
 }

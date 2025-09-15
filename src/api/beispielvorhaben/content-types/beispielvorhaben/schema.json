@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "regelungsvorhabens",
+  "collectionName": "beispielvorhabens",
   "info": {
-    "singularName": "regelungsvorhaben",
-    "pluralName": "regelungsvorhabens",
-    "displayName": "Regelungsvorhaben",
+    "singularName": "beispielvorhaben",
+    "pluralName": "beispielvorhabens",
+    "displayName": "Beispielvorhaben",
     "description": ""
   },
   "options": {
@@ -62,9 +62,7 @@
     },
     "Rechtsgebiet": {
       "type": "enumeration",
-      "enum": [
-        "TBD"
-      ]
+      "enum": ["TBD"]
     },
     "VeroeffentlichungsDatum": {
       "type": "date"
@@ -73,7 +71,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::digitalcheck.digitalcheck",
-      "mappedBy": "Regelungsvorhaben"
+      "mappedBy": "Beispielvorhaben"
     },
     "LinkRegelungstext": {
       "type": "string",
