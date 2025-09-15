@@ -104,7 +104,7 @@ const copyPrinzipienAnwendungToPrinzipAspekt = async (client) => {
   const updatePrinzipAspekt = gql`
     mutation Prinzip($documentId: ID!, $data: PrinzipInput!) {
       updatePrinzip(documentId: $documentId, data: $data) {
-        PrinzipAspekt {
+        Aspekte {
           Titel
           Text
           Leitfragen
@@ -121,7 +121,7 @@ const copyPrinzipienAnwendungToPrinzipAspekt = async (client) => {
     await client.request(updatePrinzipAspekt, {
       documentId: prinzip.documentId,
       data: {
-        PrinzipAspekt: prinzip.PrinzipienAnwendung.map((anwendung) => ({
+        Aspekte: prinzip.PrinzipienAnwendung.map((anwendung) => ({
           Titel: anwendung.Title,
           Text: anwendung.Text,
           Leitfragen: anwendung.Questions,

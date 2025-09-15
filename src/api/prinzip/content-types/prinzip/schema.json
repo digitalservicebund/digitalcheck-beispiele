@@ -55,7 +55,7 @@
       "relation": "oneToOne",
       "target": "api::absatz.absatz"
     },
-    "PrinzipAspekt": {
+    "Aspekte": {
       "type": "component",
       "component": "shared.prinzip-aspekt",
       "repeatable": true

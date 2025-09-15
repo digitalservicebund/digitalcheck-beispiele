@@ -633,6 +633,7 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Aspekte: Schema.Attribute.Component<'shared.prinzip-aspekt', true>;
     Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
     Beispielvorhaben: Schema.Attribute.Relation<
       'oneToMany',
@@ -658,7 +659,6 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<1>;
-    PrinzipAspekt: Schema.Attribute.Component<'shared.prinzip-aspekt', true>;
     PrinzipienAnwendung: Schema.Attribute.Component<
       'shared.prinzipien-anwendung',
       true
