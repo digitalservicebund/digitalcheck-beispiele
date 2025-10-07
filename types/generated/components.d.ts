@@ -7,7 +7,14 @@ export interface SharedPrinzipAspekt extends Struct.ComponentSchema {
   };
   attributes: {
     Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
+    Beschreibung: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'TBA'>;
     Formulierungsbeispiel: Schema.Attribute.Blocks;
+    Kurzbezeichnung: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'TBD'>;
     Leitfragen: Schema.Attribute.Blocks;
     Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Titel: Schema.Attribute.String & Schema.Attribute.Required;

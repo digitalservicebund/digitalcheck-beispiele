@@ -23,6 +23,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::absatz.absatz"
+    },
+    "Kurzbezeichnung": {
+      "type": "string",
+      "default": "TBD",
+      "required": true,
+      "unique": true
+    },
+    "Beschreibung": {
+      "type": "string",
+      "default": "TBA",
+      "required": true
     }
   },
   "config": {}
