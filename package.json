@@ -31,6 +31,6 @@
     "npm": ">=6.0.0"
   },
   "devDependencies": {
-    "graphql-request": "^7.2.0"
+    "graphql-request": "^7.3.1"
   }
 }
