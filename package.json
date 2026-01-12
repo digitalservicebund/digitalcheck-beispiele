@@ -17,7 +17,7 @@
     "@strapi/plugin-graphql": "^5.33.0",
     "@strapi/plugin-users-permissions": "^5.33.0",
     "@strapi/strapi": "^5.33.0",
-    "better-sqlite3": "^12.5.0",
+    "better-sqlite3": "^12.6.0",
     "fs-extra": "^11.3.0",
     "graphql": "^16.12.0",
     "mime-types": "^3.0.1",
