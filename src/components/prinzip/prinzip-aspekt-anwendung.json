@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_prinzip_prinzip_aspekt_anwendungen",
+  "info": {
+    "displayName": "PrinzipAspektAnwendung",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "Titel": {
+      "type": "string"
+    },
+    "Erklaerung": {
+      "type": "blocks"
+    },
+    "Formulierungsbeispiel": {
+      "type": "blocks"
+    },
+    "Beispiel": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::absatz.absatz"
+    }
+  },
+  "config": {}
+}

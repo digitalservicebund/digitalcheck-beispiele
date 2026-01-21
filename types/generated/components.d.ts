@@ -1,11 +1,29 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface PrinzipPrinzipAspektAnwendung extends Struct.ComponentSchema {
+  collectionName: 'components_prinzip_prinzip_aspekt_anwendungen';
+  info: {
+    displayName: 'PrinzipAspektAnwendung';
+    icon: 'check';
+  };
+  attributes: {
+    Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
+    Erklaerung: Schema.Attribute.Blocks;
+    Formulierungsbeispiel: Schema.Attribute.Blocks;
+    Titel: Schema.Attribute.String;
+  };
+}
+
 export interface SharedPrinzipAspekt extends Struct.ComponentSchema {
   collectionName: 'components_shared_prinzip_aspekts';
   info: {
     displayName: 'PrinzipAspekt';
   };
   attributes: {
+    Anwendung: Schema.Attribute.Component<
+      'prinzip.prinzip-aspekt-anwendung',
+      true
+    >;
     Beispiel: Schema.Attribute.Relation<'oneToOne', 'api::absatz.absatz'>;
     Beschreibung: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -84,6 +102,7 @@ export interface SharedTag extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'prinzip.prinzip-aspekt-anwendung': PrinzipPrinzipAspektAnwendung;
       'shared.prinzip-aspekt': SharedPrinzipAspekt;
       'shared.prinzip-kurzbezeichnung': SharedPrinzipKurzbezeichnung;
       'shared.prinziperfuellung': SharedPrinziperfuellung;
