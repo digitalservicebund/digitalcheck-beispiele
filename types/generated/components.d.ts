@@ -34,6 +34,7 @@ export interface SharedPrinzipAspekt extends Struct.ComponentSchema {
       Schema.Attribute.Unique &
       Schema.Attribute.DefaultTo<'TBD'>;
     Leitfragen: Schema.Attribute.Blocks;
+    Nummer: Schema.Attribute.String;
     Text: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Titel: Schema.Attribute.String & Schema.Attribute.Required;
   };
