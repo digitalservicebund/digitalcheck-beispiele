@@ -19,6 +19,9 @@
       "type": "blocks",
       "required": true
     },
+    "Auszug": {
+      "type": "blocks"
+    },
     "Paragraph": {
       "type": "relation",
       "relation": "manyToOne",
