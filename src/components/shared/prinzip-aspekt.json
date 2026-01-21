@@ -39,6 +39,9 @@
       "type": "component",
       "component": "prinzip.prinzip-aspekt-anwendung",
       "repeatable": true
+    },
+    "Nummer": {
+      "type": "string"
     }
   },
   "config": {}
