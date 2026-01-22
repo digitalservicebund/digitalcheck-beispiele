@@ -15,7 +15,7 @@ module.exports = () => ({
                         includeErrors: { transform: (err) => err },
                       }),
                     ApolloServerPluginCacheControl({
-                        defaultMaxAge: 60 * 60 * 24, // 1 day
+                        defaultMaxAge: 20, // seconds
                     }),
                     responseCachePlugin(),
                 ],
