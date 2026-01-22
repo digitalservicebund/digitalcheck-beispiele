@@ -54,6 +54,9 @@
       "type": "component",
       "component": "shared.prinzip-aspekt",
       "repeatable": true
+    },
+    "Kurzbeschreibung": {
+      "type": "blocks"
     }
   }
 }

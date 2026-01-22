@@ -701,6 +701,7 @@ export interface ApiPrinzipPrinzip extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Kurzbeschreibung: Schema.Attribute.Blocks;
     Kurzbezeichnung: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
