@@ -19,7 +19,7 @@
     "@strapi/strapi": "^5.36.0",
     "better-sqlite3": "^12.6.2",
     "fs-extra": "^11.3.0",
-    "graphql": "^16.12.0",
+    "graphql": "^16.13.0",
     "mime-types": "^3.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
