@@ -1,6 +1,15 @@
-# 🚀 Getting started with Strapi
+# Getting started
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+
+### Git Hooks
+
+For the provided Git hooks, you will need to install [lefthook](https://github.com/evilmartians/lefthook/) and [talisman](https://github.com/thoughtworks/talisman):
+
+```bash
+brew install lefthook talisman
+lefthook install
+```
 
 ### `develop`
 
