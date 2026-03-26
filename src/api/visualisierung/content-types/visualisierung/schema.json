@@ -36,6 +36,9 @@
       "relation": "manyToOne",
       "target": "api::beispielvorhaben.beispielvorhaben",
       "inversedBy": "Visualisierungen"
+    },
+    "Aufwand": {
+      "type": "string"
     }
   }
 }

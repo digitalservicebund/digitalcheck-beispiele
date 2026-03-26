@@ -738,6 +738,7 @@ export interface ApiVisualisierungVisualisierung
     draftAndPublish: true;
   };
   attributes: {
+    Aufwand: Schema.Attribute.String;
     Beispielvorhaben: Schema.Attribute.Relation<
       'manyToOne',
       'api::beispielvorhaben.beispielvorhaben'
