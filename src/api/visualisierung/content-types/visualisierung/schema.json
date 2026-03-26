@@ -15,7 +15,10 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["files", "images"]
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
     },
     "Titel": {
       "type": "string",
@@ -38,6 +41,9 @@
       "inversedBy": "Visualisierungen"
     },
     "Aufwand": {
+      "type": "string"
+    },
+    "Ressort": {
       "type": "string"
     }
   }
