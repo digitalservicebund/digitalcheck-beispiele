@@ -62,7 +62,9 @@
     },
     "Rechtsgebiet": {
       "type": "enumeration",
-      "enum": ["TBD"]
+      "enum": [
+        "TBD"
+      ]
     },
     "VeroeffentlichungsDatum": {
       "type": "date"
