@@ -57,6 +57,9 @@
     },
     "Kurzbeschreibung": {
       "type": "blocks"
+    },
+    "Hilfetext": {
+      "type": "blocks"
     }
   }
 }
