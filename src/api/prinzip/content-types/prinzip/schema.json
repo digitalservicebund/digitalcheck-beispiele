@@ -60,6 +60,9 @@
     },
     "Hilfetext": {
       "type": "blocks"
+    },
+    "ErklearungsHilfe": {
+      "type": "blocks"
     }
   }
 }
