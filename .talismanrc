@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: pnpm-lock.yaml
+  ignore_detectors: [filecontent]
+version: "1.0"
