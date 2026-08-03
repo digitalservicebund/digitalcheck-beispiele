@@ -111,6 +111,8 @@ node_modules
 .pnp.*
 yarn-error.log
 
+.pnpm-store/
+
 ############################
 # Tests
 ############################
