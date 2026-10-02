@@ -1,3 +1,35 @@
+# ⚠️ Project status: Archived
+
+The content of this project is being moved from Strapi to an Astro content collection. Strapi is no longer needed, so the Strapi Cloud subscription will be cancelled.
+
+A full backup of the Strapi Cloud data (content, media and configuration) was made on **2 October 2026**. It is stored in this repository as `digitalcheck-backup-02102026.tar`.
+
+## Restoring the backup
+
+The backup is not encrypted, so no key is needed. It does not include admin users or API tokens.
+
+1. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+2. Import the backup into a local SQLite database. This **deletes all existing local content and uploads** before restoring. Confirm with `y` when prompted:
+
+   ```bash
+   pnpm strapi import -f digitalcheck-backup-02102026.tar
+   ```
+
+3. Start Strapi:
+
+   ```bash
+   pnpm run develop
+   ```
+
+4. Open http://localhost:1337/admin. If this is a fresh database, register a new admin user first.
+
+5. Entries, media and relations should be present in the Content Manager and Media Library.
+
 # Getting started
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
